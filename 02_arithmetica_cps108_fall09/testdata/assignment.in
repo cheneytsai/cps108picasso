@@ -1,0 +1,18 @@
+a = 2
+b = a * 2
+a = 4
+b
+a = 2 * 2 * 4
+b = 16
+c = a - b
+b = 2 * 16
+c
+a = ~ b
+c
+z
+b = 100 - ( 2 - z ) * 5 / 2
+MaxGrade = 100
+YourRanking = 2
+YourMistakes = 5 * 2 - YourRanking % 2
+Adjust = 7
+Your_Grade = ( MaxGrade - YourMistakes ) + Adjust
