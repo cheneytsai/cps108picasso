@@ -1,0 +1,19 @@
+
+Name: Michael Yu
+Date started: September 01, Date completed: September 06, Hours spent: ~10-11
+Students discusssed assignment with: Lisa Guthermath, Megan Heyshman
+Files used to start project:
+	Main.java - prompts user for input and outputs result
+Test files: 
+	constants.in - file of arithmetic operations, compared to constants_results.in during tests
+	assignment.in - same idea as constants.in, but contains variables and assigning variables
+	functions.in - contains function operations
+	negation_vars - contains negation operations
+	history.in - file of expressions using the history operators
+	complex.in - file of complicated expressions
+
+Impressions:
+	I definitely wasn't expecting this assignment to take as long as it did, or I would have started it earlier.
+	It was very enjoyable though, especially at the end when you have your own working calculator. I was glad that
+	you gave us extra time to finish the project, as it allowed me to implement some of the extra credit and fixed
+	some bugs that I found.
