@@ -1,6 +1,7 @@
 package commands;
 
 import java.awt.Dimension;
+import java.util.ResourceBundle;
 import javax.swing.JComboBox;
 import model.Pixmap;
 import model.RGBColor;
@@ -9,9 +10,13 @@ import model.Expression;
 
 public class Evaluater extends Command
 {
-    public Evaluater ()
+    private static ResourceBundle myResources = ResourceBundle.getBundle("resources.English");
+    private JComboBox myExpressionChooser;
+
+    public Evaluater (JComboBox expressionChooser)
     {
-        super("Evaluate");
+        super(myResources.getString("EvaluateCommand"));
+        myExpressionChooser = expressionChooser;
     }
 
 
@@ -38,12 +43,6 @@ public class Evaluater extends Command
     
     private Expression createExpression ()
     {
-        // BUGBUG: let the user set this, could use code like this:
-        //JComboBox box = new JComboBox();
-        //for (Expression expr : Expression.values())
-        //{
-        //    box.addItem(expr);
-        //}
-        return Expression.DIVIDE;
+        return (Expression)myExpressionChooser.getSelectedItem();
     }
 }

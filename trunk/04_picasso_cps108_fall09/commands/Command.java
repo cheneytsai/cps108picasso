@@ -12,7 +12,6 @@ public abstract class Command
 {
     private String myName;
 
-
     public Command (String name)
     {
         myName = name;
