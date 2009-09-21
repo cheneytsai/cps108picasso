@@ -1,5 +1,6 @@
 package commands;
 
+import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 import model.Pixmap;
 
@@ -9,11 +10,11 @@ import model.Pixmap;
 public class Writer extends Command
 {
     private static final JFileChooser ourChooser = new JFileChooser(System.getProperties().getProperty("user.dir"));
-
+    private static ResourceBundle myResources = ResourceBundle.getBundle("resources.English");
 
     public Writer ()
     {
-        super("Save");
+        super(myResources.getString("SaveCommand"));
     }
 
 
