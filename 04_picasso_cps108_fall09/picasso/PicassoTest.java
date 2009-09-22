@@ -12,67 +12,80 @@ public class PicassoTest extends TestCase {
     
     public static final double MARGIN_OF_ERROR = .000001;
     private PicassoParser parse;
+    private Scanner testInput;
+    private Scanner testResults;
     
     public void setUp()
     {
         parse = new PicassoParser();
     }
     
-    public void testParser()
+    private void initializeScanner(String fileName) throws FileNotFoundException
     {
-        PicassoParser parse = new PicassoParser();
-        String str = parse.stringFormat("abc(d");
-        assertEquals(str, "abc ( d");
-        str = parse.stringFormat("(aa,,aa )aa()a");
-        assertEquals(str, " ( aa ,  , aa  ) aa (  ) a");
+        testInput = new Scanner(new File("testdata\\" + fileName + ".in"));
+        testResults = new Scanner(new File("testdata\\" + fileName + "_results.in"));
     }
     
-    public void testXY() throws FileNotFoundException
+    private void isEqual(double arg0, double arg1)
     {
-        Scanner scan = new Scanner(new File("testdata\\XY.in"));
-        Scanner scan2 = new Scanner(new File("testdata\\XY_results.in"));        
-        int i = scan.nextInt();
+        assertTrue(Math.abs(arg0 - arg1) < MARGIN_OF_ERROR);
+    }
+    
+    public void testAddSpaces() throws FileNotFoundException
+    {
+        initializeScanner("AddSpaces");
+        while (testInput.hasNext())
+        {
+            assertEquals(parse.stringFormat(testInput.nextLine()), testResults.nextLine());
+        }
+    }
+    
+    public void testX() throws FileNotFoundException
+    {
+        initializeScanner("XY"); 
+        int i = testInput.nextInt();
         Dimension size = new Dimension(i, i);
         VarX x = new VarX();
-        while (scan.hasNext())
+        while (testInput.hasNext())
         {
-            double[] d = x.evaluate(scan.nextInt(), 0, size);
-            double result = scan2.nextDouble();
+            double[] d = x.evaluate(testInput.nextInt(), 0, size);
+            double result = testResults.nextDouble();
 
-                assertTrue(Math.abs(result - d[0]) < MARGIN_OF_ERROR);
-        }
-
-        scan = new Scanner(new File("testdata\\XY.in"));
-        scan2 = new Scanner(new File("testdata\\XY_results.in"));        
+                isEqual(result, d[0]);
+        }       
+    }
+    
+    public void testY() throws FileNotFoundException
+    {
+        initializeScanner("XY");      
         VarY y = new VarY();
-        i = scan.nextInt();
-        while (scan.hasNext())
+        int i = testInput.nextInt();
+        Dimension size = new Dimension(i, i);
+        while (testInput.hasNext())
         {
-            double[] d = y.evaluate(0, scan.nextInt(), size);
-            double result = scan2.nextDouble();
-
-                assertTrue(Math.abs(result - d[0]) < MARGIN_OF_ERROR);
+            double[] d = y.evaluate(0, testInput.nextInt(), size);
+            isEqual(testResults.nextDouble(), d[0]);
 
         }
     }
-    
     public void testAddition() throws FileNotFoundException
     {
-        Scanner scan = new Scanner(new File("testdata\\Addition.in"));
-        while (scan.hasNextLine()){
-            parse.makeExpression(scan.nextLine());
-            int i = scan.nextInt();
-            for (int k = 1; k <= i; k ++)
+        initializeScanner("Addition");
+        while (testInput.hasNextLine())
+        {
+            String str = testInput.nextLine();
+            parse.makeExpression(str);
+            int d = testInput.nextInt();
+            Dimension size = new Dimension(d, d);
+            int count = testInput.nextInt();
+            for (int k = 0; k < count; k++)
             {
-                for (int j = 1; j <= i; j ++)
-                {
-                    double[] d = parse.evaluate(k , j, new Dimension(i, i));
-                    double result = scan.nextDouble();
-                    assertTrue(Math.abs(result - d[0]) < MARGIN_OF_ERROR);
-                }
+                double[] result = parse.evaluate(testInput.nextInt(), testInput.nextInt(), size);
+                isEqual(testResults.nextDouble(), result[0]);
             }
+            testInput.nextLine();
         }
-
+        
         
     }
 }
