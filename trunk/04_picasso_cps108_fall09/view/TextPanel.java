@@ -55,6 +55,7 @@ public class TextPanel extends JPanel
         {
             public void actionPerformed (ActionEvent e)
             {
+                //String str = myParser.stringFormat(inputField.getText());
                 myParser.makeExpression(inputField.getText());
                 execute(myPixmap);
             }

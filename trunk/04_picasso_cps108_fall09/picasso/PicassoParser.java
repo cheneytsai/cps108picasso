@@ -1,5 +1,6 @@
 package picasso;
 import java.awt.Dimension;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -15,14 +16,25 @@ public class PicassoParser {
     private Stack<Token> myOperators = new Stack<Token>();
     private Stack<Token> myOperands = new Stack<Token>();
     private Token myCurrentExpression;
+    private static ResourceBundle myResources = ResourceBundle.getBundle("resources.OrderOfOperations");
     
     protected String stringFormat(String infix)
     {
         StringBuilder build = new StringBuilder(infix);
-        for (int k = 0; k < build.length(); k++)
+        /*for (int k = 0; k < build.length(); k++)
         {
             char c = build.charAt(k);
             if (c == ',' || c == ')' || c == '(')
+            {
+                build.insert(k+1, ' ');
+                build.insert(k, ' ');
+                k++;
+            }
+        }*/
+        for (int k = 0; k < build.length(); k++)
+        {
+            String s = build.charAt(k) + "";
+            if (myResources.containsKey(s))
             {
                 build.insert(k+1, ' ');
                 build.insert(k, ' ');
