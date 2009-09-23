@@ -2,18 +2,22 @@ package tokens;
 
 import java.awt.Dimension;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import picasso.PicassoException;
 
 
 public class Addition extends Token {
 
-    public static final int ORDER_OF_OPERATION = 1;
+    //public static final int ORDER_OF_OPERATION = 1;
     public static final String OPERATION = "+";
     public static final int NUM_OF_OPERANDS = 2;
+    private static ResourceBundle myResources = ResourceBundle.getBundle("resources.OrderOfOperations");
 
     public Addition() {
-        super(NUM_OF_OPERANDS, OPERATION, ORDER_OF_OPERATION);
+        
+        //super(NUM_OF_OPERANDS, OPERATION, ORDER_OF_OPERATION);
+        super(NUM_OF_OPERANDS, OPERATION, Integer.parseInt(myResources.getString(OPERATION)));
     }
     
     @Override
