@@ -36,37 +36,13 @@ public class PicassoTest extends TestCase {
         initializeScanner("AddSpaces");
         while (testInput.hasNext())
         {
-            assertEquals(parse.stringFormat(testInput.nextLine()), testResults.nextLine());
+            assertEquals(parse.addSpaces(testInput.nextLine()), testResults.nextLine());
         }
     }
     
-    public void testX() throws FileNotFoundException
+    public void testConstant() throws FileNotFoundException
     {
-        initializeScanner("XY"); 
-        int i = testInput.nextInt();
-        Dimension size = new Dimension(i, i);
-        VarX x = new VarX();
-        while (testInput.hasNext())
-        {
-            double[] d = x.evaluate(testInput.nextInt(), 0, size);
-            double result = testResults.nextDouble();
-
-                isEqual(result, d[0]);
-        }       
-    }
-    
-    public void testY() throws FileNotFoundException
-    {
-        initializeScanner("XY");      
-        VarY y = new VarY();
-        int i = testInput.nextInt();
-        Dimension size = new Dimension(i, i);
-        while (testInput.hasNext())
-        {
-            double[] d = y.evaluate(0, testInput.nextInt(), size);
-            isEqual(testResults.nextDouble(), d[0]);
-
-        }
+        
     }
     public void testAddition() throws FileNotFoundException
     {
@@ -80,12 +56,22 @@ public class PicassoTest extends TestCase {
             int count = testInput.nextInt();
             for (int k = 0; k < count; k++)
             {
-                double[] result = parse.evaluate(testInput.nextInt(), testInput.nextInt(), size);
+                setCoordinates(testInput.nextInt(), testInput.nextInt(), size);
+                double[] result = parse.evaluate();
                 isEqual(testResults.nextDouble(), result[0]);
             }
             testInput.nextLine();
-        }
-        
-        
+        }    
+    }
+    
+    private void setCoordinates(int x, int y, Dimension size)
+    {
+        VariableHandler.setVariable("x", convertCoordinates(x, size.getWidth()));
+        VariableHandler.setVariable("y", convertCoordinates(y, size.getHeight()));
+    }
+    
+    private double convertCoordinates(int pixelCoords, double size)
+    {
+       return (pixelCoords / size) * 2 - 1;
     }
 }

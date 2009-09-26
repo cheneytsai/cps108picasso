@@ -19,13 +19,18 @@ public abstract class TokenHandler {
      * @return
      */
     public static final Token getExpression(String str) {
-        if (str.equals(VarX.OPERATION))
-            return new VarX();
-        if (str.equals(VarY.OPERATION))
-            return new VarY();
         if (str.equals(Addition.OPERATION))
             return new Addition();
-       return null;
+        if (str.equals(OpenGroup.OPERATION))
+            return new OpenGroup();
+        if (str.equals(CloseGroup.OPERATION))
+            return new CloseGroup();
+        
+        try {
+            return new Constant(Double.parseDouble(str));
+        } catch (NumberFormatException e) {
+            return new Variable(str);
+        }
     }
     
     /**
