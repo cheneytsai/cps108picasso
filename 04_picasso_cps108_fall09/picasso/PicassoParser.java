@@ -1,4 +1,5 @@
 package picasso;
+import tokens.*;
 import java.awt.Dimension;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -15,22 +16,12 @@ public class PicassoParser {
     private Scanner myScanner;
     private Stack<Token> myOperators = new Stack<Token>();
     private Stack<Token> myOperands = new Stack<Token>();
-    private Token myCurrentExpression;
+    private EvaluatableToken myCurrentExpression;
     private static ResourceBundle myResources = ResourceBundle.getBundle("resources.OrderOfOperations");
     
-    protected String stringFormat(String infix)
+    protected String addSpaces(String infix)
     {
         StringBuilder build = new StringBuilder(infix);
-        /*for (int k = 0; k < build.length(); k++)
-        {
-            char c = build.charAt(k);
-            if (c == ',' || c == ')' || c == '(')
-            {
-                build.insert(k+1, ' ');
-                build.insert(k, ' ');
-                k++;
-            }
-        }*/
         for (int k = 0; k < build.length(); k++)
         {
             String s = build.charAt(k) + "";
@@ -56,11 +47,11 @@ public class PicassoParser {
 
             // operator -- convert previous higher order operators before push
             else {
-                if (!e.isOpenGroup()) {
-                    if (e.isCloseGroup()) {
+                if (!(e instanceof OpenGroup)) {
+                    if (e instanceof CloseGroup) {
                         Token op = myOperators.pop();
-                        while (!op.isOpenGroup()) {
-                            handleOperator(op);
+                        while (!(op instanceof OpenGroup)) {
+                            handleOperator((EvaluatableToken) op);
                             op = myOperators.pop();
                         }
                     }
@@ -71,11 +62,11 @@ public class PicassoParser {
                                         .getOrderOfOperation()) {
                             Token op = myOperators.pop();
                             // convert operator into expression
-                            handleOperator(op);
+                            handleOperator((EvaluatableToken) op);
                         }
                     }
                 }
-                if (!e.isCloseGroup()) {
+                if (!(e instanceof CloseGroup)) {
                     myOperators.push(e);
                 }
             }
@@ -85,14 +76,14 @@ public class PicassoParser {
         while (myOperators.size() > 0) {
             Token op = myOperators.pop();
             // convert operator into expression
-            handleOperator(op);
+            handleOperator((EvaluatableToken )op);
         }
         
         if (myOperands.size() == 1) {
-            myCurrentExpression = myOperands.pop();
+            myCurrentExpression = (EvaluatableToken) myOperands.pop();
             
         } else {
-            myOperands.clear();
+            clearStack();
             throw new PicassoException("ill-formatted expression");
         }
               
@@ -103,14 +94,18 @@ public class PicassoParser {
      * 
      * @param op
      */
-    private void handleOperator(Token op) {
+    private void handleOperator(EvaluatableToken op) {
+        if (!(op instanceof EvaluatableToken))
+        {
+            throw new PicassoException("Ill-formatted expression");
+        }
         if (myOperands.size() < op.getNumOperands())
             throw new PicassoException(
                     "Not enough operands to operate on: " + op.getOperation()
                             + " " + myOperands.size());
 
         for (int k = 0; k < op.getNumOperands(); k++) {
-            op.addOperand(myOperands.pop());
+            op.addOperand((EvaluatableToken) myOperands.pop());
         }
         myOperands.push(op);
     }
@@ -123,8 +118,8 @@ public class PicassoParser {
         myOperators.clear();
     }
     
-    public double[] evaluate(int x, int y, Dimension size)
+    public double[] evaluate()
     {
-        return myCurrentExpression.evaluate(x, y, size);
+        return myCurrentExpression.evaluate();
     }
 }
