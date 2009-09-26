@@ -1,8 +1,11 @@
 package tokens;
+import java.util.List;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+
+import picasso.PicassoException;
 
 public abstract class EvaluatableToken extends Token{
     
@@ -42,6 +45,13 @@ public abstract class EvaluatableToken extends Token{
      */
     public void addOperand(EvaluatableToken e) {
         myOperands.add(e);
+    }
+    
+    public void checkNumOperands()
+    {
+        if (getOperands().size() != getNumOperands())
+            throw new PicassoException(
+                    "Incorrect number of operands to perform: " + getOperation());
     }
 
     /**
