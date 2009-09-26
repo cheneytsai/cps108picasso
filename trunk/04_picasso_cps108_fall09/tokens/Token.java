@@ -15,83 +15,15 @@ import java.util.*;
  * @author Michael Yu
  */
 public abstract class Token {
-    private List<Token> myOperands;
-    private int myNumOperands;
-    private String myOperation;
+    
     private int myOrderOfOperation;
-
+    private String myOperation;
     /**
      * Create an empty expression
      */
-    public Token(int numOperands, String operation, int order) {
-        myNumOperands = numOperands;
+    public Token(String operation, int order) {
         myOperation = operation;
         myOrderOfOperation = order;
-        myOperands = new ArrayList<Token>();
-    }
-
-    /**
-     * Adds an operand to myOperands
-     * 
-     * @param e
-     *            the operand to be added
-     */
-    public void addOperand(Token e) {
-        myOperands.add(e);
-    }
-
-    /**
-     * Return list of operands
-     * 
-     * @return myOperands
-     */
-    public List<Token> getOperands() {
-        return myOperands;
-    }
-
-    /**
-     * true if is parantheses
-     * 
-     * @return
-     */
-    public boolean isGroupingToken() {
-        return false;
-    }
-
-    /**
-     * true if is open parantheses
-     * 
-     * @return
-     */
-    public boolean isOpenGroup() {
-        return false;
-    }
-
-    /**
-     * true if is close parantheses
-     * 
-     * @return
-     */
-    public boolean isCloseGroup() {
-        return false;
-    }
-
-    /**
-     * Returns number of operands an operation takes
-     * 
-     * @return
-     */
-    public int getNumOperands() {
-        return myNumOperands;
-    }
-
-    /**
-     * Returns the order of operation for the operation
-     * 
-     * @return
-     */
-    public int getOrderOfOperation() {
-        return myOrderOfOperation;
     }
 
     /**
@@ -102,12 +34,13 @@ public abstract class Token {
     public String getOperation() {
         return myOperation;
     }
-
+    
     /**
-     * Evaluates the operation
-     * @param size TODO
+     * Returns the order of operation for the operation
      * 
      * @return
      */
-    public abstract double[] evaluate(int x, int y, Dimension size);
+    public int getOrderOfOperation() {
+        return myOrderOfOperation;
+    }
 }
