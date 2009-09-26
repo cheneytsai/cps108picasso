@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import picasso.PicassoParser;
+import tokens.VariableHandler;
 import view.Canvas;
 import model.Pixmap;
 import model.RGBColor;
@@ -125,12 +126,24 @@ public class InputHandler
         {
             for (int imageX = 0; imageX < size.width; imageX++)
             {
-                double[] colorArray = myParser.evaluate(imageX, imageY, size);
+                setCoordinates(imageX, imageY, size);
+                double[] colorArray = myParser.evaluate();
                 RGBColor color =
                     new RGBColor(colorArray[0], colorArray[1], colorArray[2]);
                 target.setColor(imageX, imageY, color.toJavaColor());
             }
         }
+    }
+    
+    private void setCoordinates(int x, int y, Dimension size)
+    {
+        VariableHandler.setVariable("x", convertCoordinates(x, size.getWidth()));
+        VariableHandler.setVariable("y", convertCoordinates(y, size.getHeight()));
+    }
+    
+    private double convertCoordinates(int pixelCoords, double size)
+    {
+       return (pixelCoords / size) * 2 - 1;
     }
     
     public void openHistoryWindow() {
