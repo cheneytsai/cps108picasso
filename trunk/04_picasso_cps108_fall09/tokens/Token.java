@@ -1,8 +1,6 @@
 package tokens;
 
 
-import java.awt.Dimension;
-import java.util.*;
 
 /**
  * An Expression represents a mathematical expression as a tree.
