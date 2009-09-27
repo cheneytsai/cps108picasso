@@ -1,9 +1,7 @@
 package tokens;
 
-import java.util.List;
 import java.util.ResourceBundle;
 
-import picasso.PicassoException;
 
 
 public class Addition extends BinaryToken {
