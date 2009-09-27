@@ -21,6 +21,18 @@ public abstract class TokenHandler {
     public static final Token getExpression(String str) {
         if (str.equals(Addition.OPERATION))
             return new Addition();
+        if (str.equals(Subtraction.OPERATION))
+            return new Subtraction();
+        if (str.equals(Multiplication.OPERATION))
+            return new Multiplication();
+        if (str.equals(Division.OPERATION))
+            return new Division();
+        if (str.equals(Exponentiate.OPERATION))
+            return new Exponentiate();
+        if (str.equals(Mod.OPERATION))
+            return new Mod();
+        if (str.equals(PerlinColor.OPERATION))
+            return new PerlinColor();
         if (str.equals(OpenGroup.OPERATION))
             return new OpenGroup();
         if (str.equals(CloseGroup.OPERATION))
