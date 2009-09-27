@@ -1,6 +1,5 @@
 package picasso;
 import tokens.*;
-import java.awt.Dimension;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.Stack;
@@ -9,7 +8,7 @@ import java.util.Stack;
 import tokens.Token;
 import tokens.TokenHandler;
 
-import model.RGBColor;
+
 
 public class PicassoParser {
     
@@ -83,6 +82,7 @@ public class PicassoParser {
             myCurrentExpression = (EvaluatableToken) myOperands.pop();
             
         } else {
+            System.out.println(myOperands.size());
             clearStack();
             throw new PicassoException("ill-formatted expression");
         }
