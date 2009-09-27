@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 public class Mod extends BinaryToken {
 
-    public static final String OPERATION = "*";
+    public static final String OPERATION = "%";
     private static ResourceBundle myResources = ResourceBundle.getBundle("resources.OrderOfOperations");
 
     public Mod() {
