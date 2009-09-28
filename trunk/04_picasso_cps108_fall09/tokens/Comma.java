@@ -14,7 +14,7 @@ public class Comma extends EvaluatableToken {
 
     public Comma() {
         super(NUM_OF_OPERANDS, OPERATION, Integer.parseInt(myResources.getString(OPERATION)));
-        //super(OPERATION, Integer.parseInt(myResources.getString(OPERATION)));
+
     }
 
     @Override
