@@ -12,7 +12,7 @@ public abstract class InputHandler {
     private static char commentToken = myResources.getString("CommentToken").charAt(0);
     
     public static final void setExpression(String exp) {
-        if(exp.charAt(0) == commentToken)
+        if(exp.length() >= 2 && exp.charAt(0) == commentToken)
         {            
             currExpression = expressionHistory.get(Integer.parseInt(exp.substring(1,2)) - 1) + exp.substring(2);
         }

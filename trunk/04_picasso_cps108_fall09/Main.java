@@ -1,6 +1,7 @@
 import java.awt.Dimension;
 
 import tokens.TokenHandler;
+import util.Utils;
 import view.Frame;
 
 
@@ -9,7 +10,7 @@ import view.Frame;
  */
 public class Main
 {
-    public static final Dimension SIZE = new Dimension(800, 600);
+    public static final Dimension SIZE = Utils.FRAME_LARGE.size();
     public static final String TITLE = "PICASSO!";
 
 
