@@ -8,7 +8,7 @@ public abstract class UnaryToken extends EvaluatableToken {
     public static final int NUM_OF_OPERANDS = 1;
     
     public UnaryToken( String operation) {
-        super(NUM_OF_OPERANDS, operation, Integer.parseInt(myOOPResources.getString("Function")));
+        super(NUM_OF_OPERANDS, operation, Integer.parseInt(myOOPResources.getString("UnaryFunction")));
     }
 
     @Override
