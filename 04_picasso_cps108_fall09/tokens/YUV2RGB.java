@@ -3,7 +3,7 @@ package tokens;
 import java.util.List;
 
 
-public class YUV2RGB extends MultiArgToken {
+public class YUV2RGB extends UnaryToken {
 
     public static final String OPERATION = "yuv2rgb";
 
@@ -12,12 +12,11 @@ public class YUV2RGB extends MultiArgToken {
     }
 
     @Override    
-    double[] multiArgEvaluate(List<EvaluatableToken> operands) {
-        double[] left = operands.get(1).evaluate();
-        double[] right = operands.get(0).evaluate();
-        double[] ret = {left[0] + left[2] *  1.4022,
-                left[0] + left[1] * -0.3456 + left[2] * -0.7145,
-                left[0] + left[1] *  1.7710};
+    double[] UnaryEvaluate(List<EvaluatableToken> operands) {
+        double[] op = operands.get(0).evaluate();
+        double[] ret = {op[0] + op[2] *  1.4022,
+                op[0] + op[1] * -0.3456 + op[2] * -0.7145,
+                op[0] + op[1] *  1.7710};
     
       return ret;
     }
