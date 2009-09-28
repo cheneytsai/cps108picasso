@@ -6,10 +6,9 @@ import java.util.List;
 public abstract class UnaryToken extends EvaluatableToken {
     
     public static final int NUM_OF_OPERANDS = 1;
-    public static final int ORDER_OF_OPERATION = 5;
     
     public UnaryToken( String operation) {
-        super(NUM_OF_OPERANDS, operation, ORDER_OF_OPERATION);
+        super(NUM_OF_OPERANDS, operation, Integer.parseInt(myOOPResources.getString("Function")));
     }
 
     @Override

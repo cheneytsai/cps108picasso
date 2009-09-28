@@ -1,7 +1,6 @@
 package tokens;
 
 public class Variable extends EvaluatableToken {
-    public static final int ORDER_OF_OPERATION = 0;
     public static final String OPERATION = null;
     public static final int NUM_OF_OPERANDS = 0;
     private String myName;
@@ -14,7 +13,7 @@ public class Variable extends EvaluatableToken {
      * @param value
      */
     public Variable(String name) {
-        super(NUM_OF_OPERANDS, OPERATION, ORDER_OF_OPERATION);
+        super(NUM_OF_OPERANDS, OPERATION, Integer.parseInt(myOOPResources.getString("Constant")));
         myName = name;
     }
     

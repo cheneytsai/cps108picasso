@@ -17,6 +17,7 @@ public class PicassoTest extends TestCase {
     
     public void setUp()
     {
+        TokenHandler.tokenMapGenerator();
         parse = new PicassoParser();
     }
     

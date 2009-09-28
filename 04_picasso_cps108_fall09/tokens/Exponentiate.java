@@ -1,18 +1,12 @@
 package tokens;
 
-import java.util.ResourceBundle;
-
-
-
 public class Exponentiate extends BinaryToken {
 
     public static final String OPERATION = "^";
-    private static ResourceBundle myResources = ResourceBundle.getBundle("resources.OrderOfOperations");
 
     public Exponentiate() {
         
-        //super(NUM_OF_OPERANDS, OPERATION, ORDER_OF_OPERATION);
-        super(OPERATION, Integer.parseInt(myResources.getString(OPERATION)));
+        super(OPERATION, Integer.parseInt(myOOPResources.getString(OPERATION)));
     }
     
     @Override
