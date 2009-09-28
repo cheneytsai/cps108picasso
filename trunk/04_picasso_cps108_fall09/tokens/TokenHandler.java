@@ -18,7 +18,6 @@ public abstract class TokenHandler {
         {
             myTokenMap.put(s, myResources.getString(s));
         }
-        System.out.println(myTokenMap);
     }
     /**
      * Given a string decides what type of Token to create and return

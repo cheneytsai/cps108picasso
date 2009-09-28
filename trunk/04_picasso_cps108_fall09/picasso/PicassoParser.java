@@ -16,7 +16,7 @@ public class PicassoParser {
     private Stack<Token> myOperators = new Stack<Token>();
     private Stack<Token> myOperands = new Stack<Token>();
     private EvaluatableToken myCurrentExpression;
-    private static ResourceBundle myResources = ResourceBundle.getBundle("resources.OrderOfOperations");
+    private static ResourceBundle myResources = ResourceBundle.getBundle("resources.Tokens");
     
     protected String addSpaces(String infix)
     {
@@ -51,7 +51,6 @@ public class PicassoParser {
                         Token op = myOperators.pop();
                         while (!(op instanceof OpenGroup)) {
                             handleOperator( op);
-                            System.out.println(op);
                             op = myOperators.pop();
                         }
                     }

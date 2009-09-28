@@ -8,7 +8,6 @@ package tokens;
  */
 public class Constant extends EvaluatableToken {
 
-    public static final int ORDER_OF_OPERATION = 0;
     public static final String OPERATION = null;
     public static final int NUM_OF_OPERANDS = 0;
     private double[] myValue;
@@ -18,7 +17,7 @@ public class Constant extends EvaluatableToken {
      * values
      */
     public Constant() {
-        super(NUM_OF_OPERANDS, OPERATION, ORDER_OF_OPERATION);
+        super(NUM_OF_OPERANDS, OPERATION, Integer.parseInt(myOOPResources.getString("Constant")));
         myValue = new double[3];
     }
 

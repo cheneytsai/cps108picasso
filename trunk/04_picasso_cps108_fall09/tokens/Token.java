@@ -1,5 +1,7 @@
 package tokens;
 
+import java.util.ResourceBundle;
+
 
 
 /**
@@ -16,6 +18,8 @@ public abstract class Token {
     
     private int myOrderOfOperation;
     private String myOperation;
+    protected static final ResourceBundle myOOPResources = ResourceBundle.getBundle("resources.OrderOfOperations");
+    
     /**
      * Create an empty expression
      */
