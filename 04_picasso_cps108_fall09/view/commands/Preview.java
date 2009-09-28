@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.util.ResourceBundle;
 import javax.swing.JFrame;
 import util.Command;
+import util.Utils;
 import view.Canvas;
 import model.Pixmap;
 
@@ -19,7 +20,7 @@ public class Preview extends ExpressionCommand implements Command<Pixmap>
     private static ResourceBundle myResources = ResourceBundle.getBundle("resources.English");
 
     public void execute (Pixmap target) {
-        PreviewFrame frame = new PreviewFrame(myResources.getString("PreviewTitle"), new Dimension(600, 450));
+        PreviewFrame frame = new PreviewFrame(myResources.getString("PreviewTitle"), Utils.FRAME_MEDIUM.size());
         frame.setVisible(true);
         super.execute(frame.getView().getPixmap());
         frame.getView().refresh();

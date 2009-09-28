@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import util.Command;
+import util.Utils;
 import view.Canvas;
 import view.InputHandler;
 import model.Pixmap;
@@ -28,7 +29,7 @@ public class History extends ExpressionCommand implements Command<Pixmap>
     private static ResourceBundle myResources = ResourceBundle.getBundle("resources.English");
 
     public void execute (Pixmap target) {
-        HistoryFrame frame = new HistoryFrame(myResources.getString("HistoryTitle"), new Dimension(800, 600));
+        HistoryFrame frame = new HistoryFrame(myResources.getString("HistoryTitle"), Utils.FRAME_LARGE.size());
         frame.setVisible(true);
     }
     
