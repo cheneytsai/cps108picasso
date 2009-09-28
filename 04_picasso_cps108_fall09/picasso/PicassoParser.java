@@ -83,7 +83,6 @@ public class PicassoParser {
             myCurrentExpression = (EvaluatableToken) myOperands.pop();
             
         } else {
-            System.out.println(myOperands.size());
             clearStack();
             throw new PicassoException("ill-formatted expression");
         }
