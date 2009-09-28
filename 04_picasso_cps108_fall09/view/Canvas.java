@@ -44,7 +44,7 @@ public class Canvas extends JPanel
         if (! myPixmap.getSize().equals(getSize()))
         {
             setSize(myPixmap.getSize());
-            myContainer.setTitle(myPixmap.getName());
+            //myContainer.setTitle(myPixmap.getName());
             myContainer.pack();
         }
         repaint();
@@ -62,5 +62,6 @@ public class Canvas extends JPanel
         setPreferredSize(size);
         setMinimumSize(size);
         super.setSize(size);
+        myPixmap.setSize(size);
     }
 }
