@@ -9,50 +9,53 @@ import java.util.*;
  */
 public abstract class TokenHandler {
 
-    static Map<String, Integer> myVariables = new HashMap<String, Integer>();
-    static List<Integer> myExpressionHistory = new ArrayList<Integer>();
-
+    static Map<String, String> myTokenMap = new HashMap<String, String>();
+     
+    public static final void tokenMapGenerator()
+    {
+        ResourceBundle myResources = ResourceBundle.getBundle("resources.Tokens");
+        for (String s : myResources.keySet())
+        {
+            myTokenMap.put(s, myResources.getString(s));
+        }
+        System.out.println(myTokenMap);
+    }
     /**
      * Given a string decides what type of Token to create and return
      * 
      * @param str
      * @return
+     * @throws ClassNotFoundException 
+     * @throws IllegalAccessException 
+     * @throws InstantiationException 
      */
     public static final Token getExpression(String str) {
-        if (str.equals(Addition.OPERATION))
-            return new Addition();
-        if (str.equals(Subtraction.OPERATION))
-            return new Subtraction();
-        if (str.equals(Multiplication.OPERATION))
-            return new Multiplication();
-        if (str.equals(Division.OPERATION))
-            return new Division();
-        if (str.equals(Exponentiate.OPERATION))
-            return new Exponentiate();
-        if (str.equals(Mod.OPERATION))
-            return new Mod();
-        if (str.equals(PerlinColor.OPERATION))
-            return new PerlinColor();
-        if (str.equals(OpenGroup.OPERATION))
-            return new OpenGroup();
-        if (str.equals(CloseGroup.OPERATION))
-            return new CloseGroup();
+        if (myTokenMap.containsKey(str))
+        {
+            Class c = null;
+            try {
+                c = Class.forName("tokens." + myTokenMap.get(str));
+            } catch (ClassNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            try {
+                return (Token) c.newInstance();
+            } catch (InstantiationException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            
+        }
         
         try {
             return new Constant(Double.parseDouble(str));
         } catch (NumberFormatException e) {
             return new Variable(str);
         }
-    }
-    
-    /**
-     * Adds a new variable and value to myVariables
-     * 
-     * @param name
-     * @param value
-     */
-    public static final void addVariable(String name, int value) {
-        myVariables.put(name, value);
     }
 
 }

@@ -50,7 +50,8 @@ public class PicassoParser {
                     if (e instanceof CloseGroup) {
                         Token op = myOperators.pop();
                         while (!(op instanceof OpenGroup)) {
-                            handleOperator((EvaluatableToken) op);
+                            handleOperator( op);
+                            System.out.println(op);
                             op = myOperators.pop();
                         }
                     }
@@ -61,7 +62,7 @@ public class PicassoParser {
                                         .getOrderOfOperation()) {
                             Token op = myOperators.pop();
                             // convert operator into expression
-                            handleOperator((EvaluatableToken) op);
+                            handleOperator( op);
                         }
                     }
                 }
@@ -75,7 +76,7 @@ public class PicassoParser {
         while (myOperators.size() > 0) {
             Token op = myOperators.pop();
             // convert operator into expression
-            handleOperator((EvaluatableToken )op);
+            handleOperator(op);
         }
         
         if (myOperands.size() == 1) {
@@ -94,11 +95,12 @@ public class PicassoParser {
      * 
      * @param op
      */
-    private void handleOperator(EvaluatableToken op) {
-        if (!(op instanceof EvaluatableToken))
+    private void handleOperator(Token operator) {
+        if (!(operator instanceof EvaluatableToken))
         {
-            throw new PicassoException("Ill-formatted expression");
+            return;
         }
+        EvaluatableToken op  = (EvaluatableToken) operator;
         if (myOperands.size() < op.getNumOperands())
             throw new PicassoException(
                     "Not enough operands to operate on: " + op.getOperation()

@@ -16,7 +16,8 @@ public class Division extends BinaryToken {
     }
     
     @Override
-    double[] binaryEvaluate(double[] left, double[] right) {
+    public double[] binaryEvaluate(double[] left, double[] right) 
+    {
         double[] ret = {left[0] / right[0], left[1] / right[1], left[2] / right[2]};
         return ret;
     }
