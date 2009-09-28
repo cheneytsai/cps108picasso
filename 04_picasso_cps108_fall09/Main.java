@@ -1,4 +1,6 @@
 import java.awt.Dimension;
+
+import tokens.TokenHandler;
 import view.Frame;
 
 
@@ -13,6 +15,7 @@ public class Main
 
     public static void main (String[] args)
     {
+        TokenHandler.tokenMapGenerator();
         Frame frame = new Frame(TITLE, SIZE);
         frame.setVisible(true);
     }
