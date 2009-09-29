@@ -20,7 +20,7 @@ public class Clamp extends UnaryToken {
     @SuppressWarnings("null")
     double[] ClampFunc(double[] op)
     {
-        double[] result = null;
+        double[] result = new double[3] ;
         for(int i = 0; i < op.length; i++)
         {
             if (op[i] > 1)

@@ -14,7 +14,7 @@ public class Log extends UnaryToken {
     @Override    
     double[] UnaryEvaluate(List<EvaluatableToken> operands) {
         double[] op = operands.get(0).evaluate();
-        double[] ret = {Math.log(op[0]), Math.log(op[1]), Math.log(op[2])};
+        double[] ret = {Math.log(Math.abs(op[0])), Math.log(Math.abs(op[1])), Math.log(Math.abs(op[2]))};
       return ret;
     }
 
