@@ -47,7 +47,6 @@ public class ExpressionReader extends ExpressionCommand
                 String exp = in.nextLine();
                 InputHandler.setExpression(exp);
                 super.execute(target);
-                System.out.println(InputHandler.getExpression());
                 InputHandler.addToHistory();
             }
             catch (FileNotFoundException e)

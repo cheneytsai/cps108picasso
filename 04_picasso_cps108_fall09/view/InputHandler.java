@@ -30,7 +30,6 @@ public abstract class InputHandler {
     
     //Favorites methods
     public static final void addToFavorites() {
-        System.out.println("Favorites" + currExpression);
         expressionFavorites.add(currExpression);
     }
     
@@ -49,7 +48,6 @@ public abstract class InputHandler {
     
     //History Methods
     public static final void addToHistory() {
-        System.out.println("History" + currExpression);
         expressionHistory.add(currExpression);
     }
     
