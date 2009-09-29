@@ -14,7 +14,7 @@ import model.RGBColor;
  * 
  * @author Robert C Duvall
  */
-public abstract class ExpressionCommand implements Command<Pixmap>
+public class ExpressionCommand implements Command<Pixmap>
 {
     public static final double DOMAIN_MIN = -1;
     public static final double DOMAIN_MAX = 1;

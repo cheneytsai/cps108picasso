@@ -10,14 +10,12 @@ import model.Pixmap;
  * 
  * @author Robert C Duvall
  */
-public class Evaluate extends ExpressionCommand implements Command<Pixmap>
+public class Favorite extends ExpressionCommand implements Command<Pixmap>
 {
 
     public void execute (Pixmap target) {
 
-        super.execute(target);
-        InputHandler.addToHistory();
-        InputHandler.resetHistoryIndex();
+        InputHandler.addToFavorites();
     }
 
 }

@@ -1,0 +1,1 @@
+x * perlinColor ( x * y , perlinBW ( x - y , y ) ) / y
