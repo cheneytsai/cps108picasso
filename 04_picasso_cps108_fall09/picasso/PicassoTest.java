@@ -37,7 +37,8 @@ public class PicassoTest extends TestCase {
         initializeScanner("AddSpaces");
         while (testInput.hasNext())
         {
-            assertEquals(parse.addSpaces(testInput.nextLine()), testResults.nextLine());
+            assertEquals(parse.preProcess(testInput.nextLine()), testResults.nextLine());
+
         }
     }
     

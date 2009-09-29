@@ -16,26 +16,30 @@ public class PicassoParser {
     private Stack<Token> myOperators = new Stack<Token>();
     private Stack<Token> myOperands = new Stack<Token>();
     private EvaluatableToken myCurrentExpression;
-    private static ResourceBundle myResources = ResourceBundle.getBundle("resources.Tokens");
+    private static ResourceBundle myResources = ResourceBundle.getBundle("resources.Preprocessor");
     
-    protected String addSpaces(String infix)
+    protected String preProcess(String infix)
     {
-        StringBuilder build = new StringBuilder(infix);
-        for (int k = 0; k < build.length(); k++)
+        StringBuilder build = new StringBuilder();
+        char[] charArr = infix.toCharArray();
+        for (int k = 0; k < charArr.length; k++)
         {
-            String s = build.charAt(k) + "";
+            String s = charArr[k] + "";
             if (myResources.containsKey(s))
             {
-                build.insert(k+1, ' ');
-                build.insert(k, ' ');
-                k++;
+                build.append(" ");
+                build.append(myResources.getString(s));
+            }
+            else
+            {
+                build.append(s);
             }
         }
         return build.toString();
     }
     
     public void makeExpression(String infix) {
-        myScanner = new Scanner(infix);
+        myScanner = new Scanner(preProcess(infix));
 
         while (myScanner.hasNext()) {
             String token = myScanner.next();
