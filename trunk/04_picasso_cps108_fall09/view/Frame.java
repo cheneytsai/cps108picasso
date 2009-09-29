@@ -10,7 +10,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import util.ThreadedCommand;
 import model.Pixmap;
-import view.commands.History;
+import view.commands.ExpressionReader;
+import view.commands.ViewFavorites;
 import view.commands.Reader;
 import view.commands.Writer;
 
@@ -49,9 +50,11 @@ public class Frame extends JFrame
     {
         FileMenu result = new FileMenu(myResources.getString("FileMenu"), view);
 
-        result.add(myResources.getString("OpenCommand"), new Reader());
+        result.add(myResources.getString("OpenImageCommand"), new Reader());
+        result.add(myResources.getString("OpenExpressionCommand"), new ThreadedCommand<Pixmap>(new ExpressionReader(), view));
         result.add(myResources.getString("SaveCommand"), new Writer());
-        result.add(myResources.getString("HistoryCommand"), new ThreadedCommand<Pixmap>(new History(), view));
+        //result.add(myResources.getString("HistoryCommand"), new ThreadedCommand<Pixmap>(new History(), view));
+        result.add(myResources.getString("FavoritesCommand"), new ThreadedCommand<Pixmap>(new ViewFavorites(), view));
         result.add(new AbstractAction(myResources.getString("QuitCommand"))
         {
             public void actionPerformed (ActionEvent ev)

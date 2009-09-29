@@ -24,12 +24,12 @@ import model.Pixmap;
  * 
  * @author Robert C Duvall
  */
-public class History extends ExpressionCommand implements Command<Pixmap>
+public class ViewFavorites extends ExpressionCommand implements Command<Pixmap>
 {
     private static ResourceBundle myResources = ResourceBundle.getBundle("resources.English");
 
     public void execute (Pixmap target) {
-        HistoryFrame frame = new HistoryFrame(myResources.getString("HistoryTitle"), Utils.FRAME_LARGE.size());
+        FavoriteFrame frame = new FavoriteFrame(myResources.getString("FavoritesTitle"), Utils.FRAME_LARGE.size());
         frame.setVisible(true);
     }
     
@@ -38,14 +38,14 @@ public class History extends ExpressionCommand implements Command<Pixmap>
     }
     
     @SuppressWarnings("serial")
-    class HistoryFrame extends JFrame implements KeyListener
+    class FavoriteFrame extends JFrame implements KeyListener
     {
         private Canvas myCanvas;
         private JTextField expressionNumber;
         private JTextField expressionName;
         private int index;
 
-        public HistoryFrame (String title, Dimension size)
+        public FavoriteFrame (String title, Dimension size)
         {
             setTitle(title);
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -63,8 +63,8 @@ public class History extends ExpressionCommand implements Command<Pixmap>
             getContentPane().add(makeMessage(), BorderLayout.SOUTH);
             
             index = 0;
-            if(!InputHandler.isIndexValid(index))
-                expressionName.setText(myResources.getString("NoHistory"));
+            if(!InputHandler.isHistoryIndexValid(index))
+                expressionName.setText(myResources.getString("NoFavorites"));
             else
                 updatePane();
             pack();
@@ -124,7 +124,7 @@ public class History extends ExpressionCommand implements Command<Pixmap>
         }
         
         private void previous() {
-            if(InputHandler.isIndexValid(index - 1))
+            if(InputHandler.isFavoriteIndexValid(index - 1))
             {
                 index--;
                 updatePane();
@@ -132,7 +132,7 @@ public class History extends ExpressionCommand implements Command<Pixmap>
         }
         
         private void next() {
-            if(InputHandler.isIndexValid(index + 1))
+            if(InputHandler.isFavoriteIndexValid(index + 1))
             {
                 index++;
                 updatePane();
@@ -141,7 +141,7 @@ public class History extends ExpressionCommand implements Command<Pixmap>
         
         private void updatePane()
         {
-            expressionName.setText(InputHandler.setExpression(index));
+            expressionName.setText(InputHandler.setFavoriteExpression(index));
             expressionNumber.setText((index + 1) + "");
             executeUpdate(myCanvas.getPixmap());
             myCanvas.refresh();
