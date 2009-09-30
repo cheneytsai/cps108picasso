@@ -14,6 +14,7 @@ public class PicassoTest extends TestCase {
     
     public static final double MARGIN_OF_ERROR = .000001;
     private PicassoParser parse;
+    private PicassoParser parse2;
     private Scanner testInput;
     private Scanner testResults;
     
@@ -70,7 +71,26 @@ public class PicassoTest extends TestCase {
             testInput.nextLine();
         }    
     }
-    
+    public void testAbsoluteVal() throws FileNotFoundException
+    {
+        initializeScanner("AbsoluteVal");
+        while (testInput.hasNextLine())
+        {
+            String str = testInput.nextLine();
+            String str2 = testResults.nextLine();
+            parse.makeExpression(str);
+            parse2.makeExpression(str2);
+            Dimension size = new Dimension(5, 5);
+            int count = 25;
+            for (int k = 0; k < count; k++)
+            {
+                setCoordinates(testInput.nextInt(), testInput.nextInt(), size);
+                double[] result = parse.evaluate();
+                double[] result2 = parse2.evaluate();
+                isEqual(result[0], result2[0]);
+            }
+        }    
+    }    
     private void setCoordinates(int x, int y, Dimension size)
     {
         VariableHandler.setVariable("x", convertCoordinates(x, size.getWidth()));
