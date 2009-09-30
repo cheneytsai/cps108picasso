@@ -15,7 +15,7 @@ import model.Pixmap;
  * 
  * @author Robert C Duvall
  */
-public class Preview extends ExpressionCommand implements Command<Pixmap>
+public class Preview extends EvaluatableCommand implements Command<Pixmap>
 {
     private static ResourceBundle myResources = ResourceBundle.getBundle("resources.English");
 

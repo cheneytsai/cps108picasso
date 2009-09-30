@@ -12,6 +12,7 @@ public abstract class InputHandler {
     private static ResourceBundle myResources = ResourceBundle.getBundle("resources.English");
     private static char commentToken = myResources.getString("CommentToken").charAt(0);
     private static int myHistoryIndex = 0;
+    private static boolean parseError = false;
     
     //Sets current expression to be evaluated
     public static final void setExpression(String exp) {
@@ -21,6 +22,7 @@ public abstract class InputHandler {
         }
         else
             currExpression = exp;
+        parseError = false;
     }
     
     //Returns expression to be evaluated
@@ -30,7 +32,9 @@ public abstract class InputHandler {
     
     //Favorites methods
     public static final void addToFavorites() {
-        expressionFavorites.add(currExpression);
+        int size = expressionHistory.size();
+        if(size != 0)
+            expressionFavorites.add(expressionHistory.get(size - 1));
     }
     
     public static final String setFavoriteExpression(int index) {
@@ -48,7 +52,8 @@ public abstract class InputHandler {
     
     //History Methods
     public static final void addToHistory() {
-        expressionHistory.add(currExpression);
+        if(!parseError)
+            expressionHistory.add(currExpression);
     }
     
     public static boolean isHistoryIndexValid(int index)
@@ -78,5 +83,12 @@ public abstract class InputHandler {
     
     public static String getHistoryInfo() {
         return commentToken + "" + (myHistoryIndex + 1) + ": " + currExpression;
+    }
+    
+    /**
+     * Called if a parse error occurred, which will prevent the current string from being added to history.
+     */
+    public static void setError() {
+        parseError = true;
     }
 }
