@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import model.Pixmap;
+
 import tokens.*;
 
 import junit.framework.TestCase;
@@ -32,18 +34,16 @@ public class PicassoTest extends TestCase {
         assertTrue(Math.abs(arg0 - arg1) < MARGIN_OF_ERROR);
     }
     
+    public void testImageHandler() throws FileNotFoundException
+    {
+    }
+    
     public void testAddSpaces() throws FileNotFoundException
     {
         initializeScanner("AddSpaces");
         while (testInput.hasNext())
         {
-            String s1 = testInput.nextLine();
-            String s2 = parse.preProcess(s1);
-            String s3 = testResults.nextLine();
-            System.out.println(s1 + "\n" + s2 + "\n" + s3);
-            //assertEquals(parse.preProcess(testInput.nextLine()), testResults.nextLine());
-            assertEquals(s2, s3);
-
+            assertEquals(parse.preProcess(testInput.nextLine()), testResults.nextLine());
         }
     }
     

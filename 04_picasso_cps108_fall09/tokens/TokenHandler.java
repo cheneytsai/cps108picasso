@@ -1,6 +1,8 @@
 package tokens;
 import java.util.*;
 
+import picasso.ImageHandler;
+
 
 /**
  * Handles creation of tokens and variable values
@@ -49,7 +51,8 @@ public abstract class TokenHandler {
             }
             
         }
-        
+        if (str.startsWith("\""))
+            return new Image(ImageHandler.getImage(str));
         try {
             return new Constant(Double.parseDouble(str));
         } catch (NumberFormatException e) {
