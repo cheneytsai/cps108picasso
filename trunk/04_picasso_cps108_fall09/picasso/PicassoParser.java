@@ -21,14 +21,21 @@ public class PicassoParser {
     protected String preProcess(String infix)
     {
         StringBuilder build = new StringBuilder();
-        char[] charArr = infix.toCharArray();
-        for (int k = 0; k < charArr.length; k++)
+        for (int k = 0; k < infix.length(); k++)
         {
-            String s = charArr[k] + "";
+            String s = infix.charAt(k) + "";
             if (myResources.containsKey(s))
             {
+                String insert = myResources.getString(s);
                 build.append(" ");
-                build.append(myResources.getString(s));
+                if (insert.equals("Image"))
+                {
+                    infix = parseImageFile(infix, build, k+1);
+                    k = -1;
+                }
+                else{
+                    build.append(insert);
+                }
             }
             else
             {
@@ -36,6 +43,15 @@ public class PicassoParser {
             }
         }
         return build.toString();
+    }
+    
+    private String parseImageFile(String infix, StringBuilder build, int index)
+    {
+        int imageEnd = infix.indexOf(myResources.getString("MarkImage"), index);
+        String sub = infix.substring(index, imageEnd);
+        build.append(ImageHandler.addImage(sub));
+        infix = infix.substring(imageEnd+1);
+        return infix;
     }
     
     public void makeExpression(String infix) {
