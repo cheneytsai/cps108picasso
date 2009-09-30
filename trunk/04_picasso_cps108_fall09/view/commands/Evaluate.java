@@ -10,7 +10,7 @@ import model.Pixmap;
  * 
  * @author Robert C Duvall
  */
-public class Evaluate extends ExpressionCommand implements Command<Pixmap>
+public class Evaluate extends EvaluatableCommand implements Command<Pixmap>
 {
 
     public void execute (Pixmap target) {

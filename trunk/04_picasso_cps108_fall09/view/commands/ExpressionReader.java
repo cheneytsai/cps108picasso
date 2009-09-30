@@ -8,7 +8,7 @@ import view.InputHandler;
 import model.Pixmap;
 
 
-public class ExpressionReader extends ExpressionCommand
+public class ExpressionReader extends EvaluatableCommand
 {
  // only one dialog box needed for an application
     private static final JFileChooser ourChooser = 

@@ -15,7 +15,7 @@ import util.NamedCommand;
 import util.ThreadedCommand;
 import util.Command;
 import view.commands.Evaluate;
-import view.commands.ExpressionCommand;
+import view.commands.EvaluatableCommand;
 import view.commands.Favorite;
 import view.commands.Preview;
 
@@ -83,13 +83,13 @@ public class ExpressionPanel extends JPanel
             {
                 if(e.getKeyCode() == KeyEvent.VK_UP) {
                     if(InputHandler.nextHistory()) {
-                        new ThreadedCommand<Pixmap>(new ExpressionCommand(), myView).execute(myView.getPixmap());
+                        new ThreadedCommand<Pixmap>(new EvaluatableCommand(), myView).execute(myView.getPixmap());
                         inputField.setText(InputHandler.getHistoryInfo());
                     }
                 }
                 else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
                     if(InputHandler.previousHistory()) {
-                        new ThreadedCommand<Pixmap>(new ExpressionCommand(), myView).execute(myView.getPixmap());
+                        new ThreadedCommand<Pixmap>(new EvaluatableCommand(), myView).execute(myView.getPixmap());
                         inputField.setText(InputHandler.getHistoryInfo());
                     }
                 }

@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import util.Command;
+import util.ThreadedCommand;
 import util.Utils;
 import view.Canvas;
 import view.InputHandler;
@@ -24,17 +25,13 @@ import model.Pixmap;
  * 
  * @author Robert C Duvall
  */
-public class ViewFavorites extends ExpressionCommand implements Command<Pixmap>
+public class ViewFavorites extends EvaluatableCommand implements Command<Pixmap>
 {
     private static ResourceBundle myResources = ResourceBundle.getBundle("resources.English");
 
     public void execute (Pixmap target) {
         FavoriteFrame frame = new FavoriteFrame(myResources.getString("FavoritesTitle"), Utils.FRAME_LARGE.size());
         frame.setVisible(true);
-    }
-    
-    public void executeUpdate(Pixmap target) {
-        super.execute(target);
     }
     
     @SuppressWarnings("serial")
@@ -143,7 +140,7 @@ public class ViewFavorites extends ExpressionCommand implements Command<Pixmap>
         {
             expressionName.setText(InputHandler.setFavoriteExpression(index));
             expressionNumber.setText((index + 1) + "");
-            executeUpdate(myCanvas.getPixmap());
+            new ThreadedCommand<Pixmap>(new EvaluatableCommand(), myCanvas).execute(myCanvas.getPixmap());
             myCanvas.refresh();
         }
     }
