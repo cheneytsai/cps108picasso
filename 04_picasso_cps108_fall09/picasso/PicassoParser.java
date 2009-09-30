@@ -119,11 +119,12 @@ public class PicassoParser {
             return;
         }
         EvaluatableToken op  = (EvaluatableToken) operator;
-        if (myOperands.size() < op.getNumOperands())
+        if (myOperands.size() < op.getNumOperands()) {
+            clearStack();
             throw new PicassoException(
                     "Not enough operands to operate on: " + op.getOperation()
                             + " " + myOperands.size());
-
+        }
         for (int k = 0; k < op.getNumOperands(); k++) {
             op.addOperand((EvaluatableToken) myOperands.pop());
         }
