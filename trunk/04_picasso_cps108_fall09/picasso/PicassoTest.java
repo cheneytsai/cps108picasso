@@ -22,6 +22,7 @@ public class PicassoTest extends TestCase {
     {
         TokenHandler.tokenMapGenerator();
         parse = new PicassoParser();
+        parse2 = new PicassoParser();
     }
     
     private void initializeScanner(String fileName) throws FileNotFoundException
@@ -78,17 +79,21 @@ public class PicassoTest extends TestCase {
         {
             String str = testInput.nextLine();
             String str2 = testResults.nextLine();
+            System.out.println(str);
             parse.makeExpression(str);
             parse2.makeExpression(str2);
             Dimension size = new Dimension(5, 5);
-            int count = 25;
-            for (int k = 0; k < count; k++)
+            int count = 4;
+            for (int k = 0; k < 4; k++)
             {
                 setCoordinates(testInput.nextInt(), testInput.nextInt(), size);
                 double[] result = parse.evaluate();
                 double[] result2 = parse2.evaluate();
+                
                 isEqual(result[0], result2[0]);
+                
             }
+            testInput.nextLine();
         }    
     }    
     private void setCoordinates(int x, int y, Dimension size)
