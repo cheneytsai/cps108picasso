@@ -67,7 +67,13 @@ public class PicassoTest extends TestCase {
     
     public void testVariables() throws FileNotFoundException
     {
-        
+        initializeScanner("Variables");
+        parse.makeExpression("x");
+        while (testInput.hasNext())
+        {
+            VariableHandler.setVariable("x", testInput.nextDouble());
+            isEqual(parse.evaluate()[0], testResults.nextDouble());
+        }
     }
     
     public void testColor() throws FileNotFoundException
@@ -83,24 +89,24 @@ public class PicassoTest extends TestCase {
         }
     }
     
-    public void testAddition() throws FileNotFoundException
+    public void testArithmetic() throws FileNotFoundException
     {
-        initializeScanner("Addition");
+        initializeScanner("Arithmetic");
         while (testInput.hasNextLine())
         {
-            String str = testInput.nextLine();
-            parse.makeExpression(str);
-            int d = testInput.nextInt();
-            Dimension size = new Dimension(d, d);
-            int count = testInput.nextInt();
-            for (int k = 0; k < count; k++)
-            {
-                setCoordinates(testInput.nextInt(), testInput.nextInt(), size);
-                double[] result = parse.evaluate();
-                isEqual(testResults.nextDouble(), result[0]);
-            }
-            testInput.nextLine();
+            parse.makeExpression(testInput.nextLine());
+            isEqual(parse.evaluate()[0], testResults.nextDouble());
         }    
+    }
+    
+    public void testGrouping() throws FileNotFoundException
+    {
+        initializeScanner("Grouping");
+        while (testInput.hasNextLine())
+        {
+            parse.makeExpression(testInput.nextLine());
+            isEqual(parse.evaluate()[0], testResults.nextDouble());
+        }
     }
     public void testAbsoluteVal() throws FileNotFoundException
     {
