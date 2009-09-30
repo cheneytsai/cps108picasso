@@ -3,6 +3,7 @@ package view.commands;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import picasso.CoordinateConverter;
 import picasso.PicassoException;
 import tokens.VariableHandler;
 import util.Command;
@@ -19,9 +20,7 @@ import model.RGBColor;
  */
 public class EvaluatableCommand implements Command<Pixmap>
 {
-    public static final double DOMAIN_MIN = -1;
-    public static final double DOMAIN_MAX = 1;
-    
+
     public void execute (Pixmap target)
     {
         try
@@ -54,17 +53,8 @@ public class EvaluatableCommand implements Command<Pixmap>
     
     private void setCoordinates(int x, int y, Dimension size)
     {
-        VariableHandler.setVariable("x", imageToDomainScale(x, (int)size.getWidth()));
-        VariableHandler.setVariable("y", imageToDomainScale(y, (int)size.getHeight()));
-    }
-    
-    /**
-     * Convert from image space to domain space.
-     */
-    protected double imageToDomainScale (int value, int bounds)
-    {
-        double range = DOMAIN_MAX - DOMAIN_MIN;
-        return ((double)value / bounds) * range + DOMAIN_MIN;
+        VariableHandler.setVariable("x", CoordinateConverter.imageToDomainScale(x, (int)size.getWidth()));
+        VariableHandler.setVariable("y", CoordinateConverter.imageToDomainScale(y, (int)size.getHeight()));
     }
 
 }
