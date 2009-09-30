@@ -12,7 +12,7 @@ import junit.framework.TestCase;
 
 public class PicassoTest extends TestCase {
     
-    public static final double MARGIN_OF_ERROR = .000001;
+    public static final double MARGIN_OF_ERROR = .00001;
     private PicassoParser parse;
     private PicassoParser parse2;
     private Scanner testInput;
@@ -34,6 +34,7 @@ public class PicassoTest extends TestCase {
     private void isEqual(double arg0, double arg1)
     {
         assertTrue(Math.abs(arg0 - arg1) < MARGIN_OF_ERROR);
+        
     }
     
     public void testImageHandler() throws FileNotFoundException
@@ -113,24 +114,23 @@ public class PicassoTest extends TestCase {
         initializeScanner("AbsoluteVal");
         while (testInput.hasNextLine())
         {
-            String str = testInput.nextLine();
-            String str2 = testResults.nextLine();
-            parse.makeExpression(str);
-            parse2.makeExpression(str2);
-            Dimension size = new Dimension(5, 5);
-            int count = 4;
-            for (int k = 0; k < 4; k++)
-            {
-                setCoordinates(testInput.nextInt(), testInput.nextInt(), size);
-                double[] result = parse.evaluate();
-                double[] result2 = parse2.evaluate();
+            parse.makeExpression(testInput.nextLine());
+            parse2.makeExpression(testResults.nextLine());    
+            isEqual(parse.evaluate()[0], parse2.evaluate()[0]);
                 
-                isEqual(result[0], result2[0]);
-                
-            }
-            testInput.nextLine();
-        }    
+         }
+            
     }    
+    public void testTrig() throws FileNotFoundException
+    {
+        initializeScanner("Trig");
+        while (testInput.hasNextLine())
+        {
+            parse.makeExpression(testInput.nextLine());
+            isEqual(testResults.nextDouble(), parse.evaluate()[0]);
+        }    
+    }
+    
     private void setCoordinates(int x, int y, Dimension size)
     {
         VariableHandler.setVariable("x", convertCoordinates(x, size.getWidth()));
