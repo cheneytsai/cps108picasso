@@ -10,7 +10,7 @@ public class Random extends EvaluatableToken {
     private static ResourceBundle myResources = ResourceBundle.getBundle("resources.OrderOfOperations");
     
     public Random() {
-        super(NUM_OF_OPERANDS, OPERATION, Integer.parseInt(myResources.getString(OPERATION)));
+        super(NUM_OF_OPERANDS, OPERATION, Integer.parseInt(myResources.getString("Function")));
     }
 
     @Override

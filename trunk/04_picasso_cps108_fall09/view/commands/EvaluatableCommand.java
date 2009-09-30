@@ -3,7 +3,7 @@ package view.commands;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import picasso.CoordinateConverter;
+import picasso.Coordinates;
 import picasso.PicassoException;
 import tokens.VariableHandler;
 import util.Command;
@@ -53,8 +53,8 @@ public class EvaluatableCommand implements Command<Pixmap>
     
     private void setCoordinates(int x, int y, Dimension size)
     {
-        VariableHandler.setVariable("x", CoordinateConverter.imageToDomainScale(x, (int)size.getWidth()));
-        VariableHandler.setVariable("y", CoordinateConverter.imageToDomainScale(y, (int)size.getHeight()));
+        VariableHandler.setVariable("x", Coordinates.imageToDomainScale(x, (int)size.getWidth()));
+        VariableHandler.setVariable("y", Coordinates.imageToDomainScale(y, (int)size.getHeight()));
     }
 
 }

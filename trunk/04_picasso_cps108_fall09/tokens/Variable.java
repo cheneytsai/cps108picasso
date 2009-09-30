@@ -16,6 +16,11 @@ public class Variable extends EvaluatableToken {
         myName = name;
     }
     
+    public String getName()
+    {
+        return myName;
+    }
+    
     /**
      * Return value of thisvariable
      * 
@@ -23,8 +28,6 @@ public class Variable extends EvaluatableToken {
      */
     @Override
     public double[] evaluate() {
-        double value = VariableHandler.getValue(myName);
-        double[] ret = {value, value, value};
-        return ret;
+        return VariableHandler.getValue(myName);
     }
 }

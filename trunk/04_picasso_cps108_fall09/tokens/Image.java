@@ -3,7 +3,7 @@ package tokens;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import picasso.CoordinateConverter;
+import picasso.Coordinates;
 
 import model.Pixmap;
 import model.RGBColor;
@@ -21,8 +21,8 @@ public class Image extends EvaluatableToken {
     private int[] getCoords()
     {
         Dimension size = myImage.getSize();
-        int xCoord = CoordinateConverter.domainToImageScale(VariableHandler.getValue("x"), size.width);
-        int yCoord = CoordinateConverter.domainToImageScale(VariableHandler.getValue("y"), size.height);
+        int xCoord = Coordinates.domainToImageScale(VariableHandler.getValue("x")[0], size.width);
+        int yCoord = Coordinates.domainToImageScale(VariableHandler.getValue("y")[0], size.height);
         int[] ret = {xCoord, yCoord};
         return ret;
     }
