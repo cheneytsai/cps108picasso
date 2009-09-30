@@ -2,6 +2,8 @@ package tokens;
 
 import java.util.List;
 
+import picasso.Coordinates;
+
 
 public class Clamp extends UnaryToken {
 
@@ -23,10 +25,10 @@ public class Clamp extends UnaryToken {
         double[] result = new double[3] ;
         for(int i = 0; i < op.length; i++)
         {
-            if (op[i] > 1)
-            result[i] = 1;
-            else if (op[i] < -1)
-            result[i] = -1;
+            if (op[i] > Coordinates.DOMAIN_MAX)
+            result[i] = Coordinates.DOMAIN_MAX;
+            else if (op[i] < Coordinates.DOMAIN_MIN)
+            result[i] = Coordinates.DOMAIN_MIN;
             else
             result[i]=op[i];
         }

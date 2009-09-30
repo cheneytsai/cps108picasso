@@ -1,6 +1,6 @@
 package picasso;
 
-public abstract class CoordinateConverter {
+public abstract class Coordinates {
     
     public static final double DOMAIN_MIN = -1;
     public static final double DOMAIN_MAX = 1;

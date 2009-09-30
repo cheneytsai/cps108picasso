@@ -63,7 +63,6 @@ public class PicassoParser {
             if (e.getOrderOfOperation() == 0) {
                 myOperands.push(e);
             }
-
             // operator -- convert previous higher order operators before push
             else {
                 if (!(e instanceof OpenGroup)) {
@@ -90,7 +89,6 @@ public class PicassoParser {
                 }
             }
         }
-
         // resolve any remaining operators
         while (myOperators.size() > 0) {
             Token op = myOperators.pop();

@@ -4,17 +4,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class VariableHandler {
-    private static Map<String, Double> myVariables = new HashMap<String, Double>();
-    private static final double DEFAULT_VALUE = 0;
+    private static Map<String, EvaluatableToken> myVariables = new HashMap<String, EvaluatableToken>();
+    private static final double[] DEFAULT_VALUE = {0,0,0};
     
-    public static final void setVariable(String name, double value) {
+    public static final void setVariable(String name, EvaluatableToken value) {
         myVariables.put(name, value);
     }
     
-    public static double getValue(String name)
+    public static final void setVariable(String name, double value)
+    {
+        setVariable(name, new Constant(value));
+    }
+    public static double[] getValue(String name)
     {
         if (myVariables.containsKey(name))
-            return myVariables.get(name);
+            return myVariables.get(name).evaluate();
         return DEFAULT_VALUE;
+    }
+    
+    public static void clearVariables()
+    {
+        myVariables.clear();
     }
 }

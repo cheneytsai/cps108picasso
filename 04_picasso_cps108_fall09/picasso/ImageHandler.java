@@ -27,4 +27,11 @@ public abstract class ImageHandler {
             return myKeytoImageMap.get(key);
         throw new PicassoException("Image does not exist");
     }
+    
+    public static void clearImages()
+    {
+        myKeytoImageMap.clear();
+        myImagetoKeyMap.clear();
+        myCounter = 1;
+    }
 }

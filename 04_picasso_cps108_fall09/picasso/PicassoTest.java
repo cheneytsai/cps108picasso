@@ -38,11 +38,17 @@ public class PicassoTest extends TestCase {
     
     public void testImageHandler() throws FileNotFoundException
     {
-    }
+        initializeScanner("Image");
+        while (testInput.hasNext())
+        {
+            assertEquals(ImageHandler.addImage(testInput.nextLine()), testResults.nextLine());
+        }
+    }  
     
-    public void testAddSpaces() throws FileNotFoundException
+    public void testPreProcess() throws FileNotFoundException
     {
-        initializeScanner("AddSpaces");
+        initializeScanner("PreProcess");
+        ImageHandler.clearImages();
         while (testInput.hasNext())
         {
             assertEquals(parse.preProcess(testInput.nextLine()), testResults.nextLine());
@@ -51,8 +57,32 @@ public class PicassoTest extends TestCase {
     
     public void testConstant() throws FileNotFoundException
     {
+        initializeScanner("Constants");
+        while (testInput.hasNext())
+        {
+            parse.makeExpression(testInput.nextLine());
+            isEqual(parse.evaluate()[0], testResults.nextDouble());
+        }
+    }
+    
+    public void testVariables() throws FileNotFoundException
+    {
         
     }
+    
+    public void testColor() throws FileNotFoundException
+    {
+        initializeScanner("Color");
+        while (testInput.hasNext())
+        {
+            parse.makeExpression(testInput.nextLine());
+            for (int k = 0; k < 3; k++)
+            {
+                isEqual(parse.evaluate()[k], testResults.nextDouble());                
+            }
+        }
+    }
+    
     public void testAddition() throws FileNotFoundException
     {
         initializeScanner("Addition");
@@ -79,7 +109,6 @@ public class PicassoTest extends TestCase {
         {
             String str = testInput.nextLine();
             String str2 = testResults.nextLine();
-            System.out.println(str);
             parse.makeExpression(str);
             parse2.makeExpression(str2);
             Dimension size = new Dimension(5, 5);

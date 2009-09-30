@@ -19,7 +19,7 @@ public class Color extends MultiArgToken {
         {
             throw new PicassoException("Ill-formatted exception");
         }
-        double[] ret = {operands.get(0).evaluate()[0], operands.get(1).evaluate()[1], operands.get(2).evaluate()[2]};       
+        double[] ret = {operands.get(2).evaluate()[0], operands.get(1).evaluate()[1], operands.get(0).evaluate()[2]};       
         return ret;
     }
 
