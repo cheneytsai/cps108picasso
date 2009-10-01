@@ -3,11 +3,11 @@ package tokens;
 import java.util.List;
 
 
-public class ATan extends UnaryToken {
+public class TanH extends UnaryToken {
 
-    public static final String OPERATION = "atan";
+    public static final String OPERATION = "tanh";
 
-    public ATan() {
+    public TanH() {
         super( OPERATION);
     }
 
