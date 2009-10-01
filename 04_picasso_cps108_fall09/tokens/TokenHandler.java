@@ -1,73 +1,59 @@
 package tokens;
-
 import java.util.*;
 
 import picasso.ImageHandler;
+import picasso.PicassoException;
+
 
 /**
- * TokenHandler.java Handles creation of tokens and variable values
+ * Handles creation of tokens and variable values
  * 
- * @author Jimmy Shelick, Cheney Tsai, Michael Yu
+ * @author Michael
  */
-public abstract class TokenHandler
-{
+public abstract class TokenHandler {
 
     static Map<String, String> myTokenMap = new HashMap<String, String>();
-
+     
     public static final void tokenMapGenerator()
     {
-        ResourceBundle myResources = ResourceBundle
-                .getBundle("resources.Tokens");
+        ResourceBundle myResources = ResourceBundle.getBundle("resources.Tokens");
         for (String s : myResources.keySet())
         {
             myTokenMap.put(s, myResources.getString(s));
         }
     }
-
     /**
      * Given a string decides what type of Token to create and return
      * 
      * @param str
      * @return
-     * @throws ClassNotFoundException
-     * @throws IllegalAccessException
-     * @throws InstantiationException
+     * @throws ClassNotFoundException 
+     * @throws IllegalAccessException 
+     * @throws InstantiationException 
      */
-    @SuppressWarnings("unchecked")
-    public static final Token getExpression(String str)
-    {
+    public static final Token getToken(String str) {
         if (myTokenMap.containsKey(str))
         {
             Class c = null;
-            try
-            {
+            try {
                 c = Class.forName("tokens." + myTokenMap.get(str));
-            } catch (ClassNotFoundException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                throw new PicassoException(str + "token could not be found");
             }
-            try
-            {
+            try {
                 return (Token) c.newInstance();
-            } catch (InstantiationException e)
-            {
-                // TODO Auto-generated catch block
+            } catch (InstantiationException e) {
                 e.printStackTrace();
-            } catch (IllegalAccessException e)
-            {
-                // TODO Auto-generated catch block
+            } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
-
+            
         }
         if (str.startsWith("\""))
             return new Image(ImageHandler.getImage(str));
-        try
-        {
+        try {
             return new Constant(Double.parseDouble(str));
-        } catch (NumberFormatException e)
-        {
+        } catch (NumberFormatException e) {
             return new Variable(str);
         }
     }
