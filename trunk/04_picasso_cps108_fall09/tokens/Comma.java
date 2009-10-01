@@ -6,7 +6,7 @@ import picasso.PicassoException;
 
 /**
  * Comma.java
- * 
+ * Represents the comma token
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements the Comma Variable
  */
 

@@ -10,7 +10,7 @@ import tokens.TokenHandler;
 
 /**
  * PicassoParser.java
- * 
+ * Parses a string into an expression tree
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */
@@ -19,12 +19,17 @@ public class PicassoParser
 {
 
     private Scanner myScanner;
-    private Stack<Token> myOperators = new Stack<Token>();
-    private Stack<Token> myOperands = new Stack<Token>();
-    private EvaluatableToken myCurrentExpression;
+    private Stack<Token> myOperators = new Stack<Token>(); //Stack of operators
+    private Stack<Token> myOperands = new Stack<Token>(); //Stack of operands
+    private EvaluatableToken myCurrentExpression;   //Currently held expression
     private static ResourceBundle myResources = ResourceBundle
             .getBundle("resources.Preprocessor");
-
+    
+    /**
+     * Processes an expression string into a form more readable by the parser
+     * @param infix the expression string
+     * @return a properly formatted expression string
+     */
     protected String preProcess(String infix)
     {
         StringBuilder build = new StringBuilder();
@@ -50,7 +55,14 @@ public class PicassoParser
         }
         return build.toString();
     }
-
+    
+    /**
+     * Extracts the filename of an image and adds it to ImageHandler. Replaces the filename with the image key
+     * @param infix
+     * @param build
+     * @param index the beginning index of the filename
+     * @return
+     */
     private String parseImageFile(String infix, StringBuilder build, int index)
     {
         int imageEnd = infix.indexOf(myResources.getString("MarkImage"), index);
@@ -59,7 +71,11 @@ public class PicassoParser
         infix = infix.substring(imageEnd + 1);
         return infix;
     }
-
+    
+    /**
+     * Uses Dijikstra's algorithm to convert an infix expression string into an expression tree
+     * @param infix expression string
+     */
     public void makeExpression(String infix)
     {
         myScanner = new Scanner(preProcess(infix));
@@ -158,7 +174,11 @@ public class PicassoParser
         myOperands.clear();
         myOperators.clear();
     }
-
+    
+    /**
+     * Evaluates myCurrentExpression
+     * @return double array representing a color
+     */
     public double[] evaluate()
     {
         return myCurrentExpression.evaluate();

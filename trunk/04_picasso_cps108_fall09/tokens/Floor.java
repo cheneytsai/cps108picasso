@@ -9,7 +9,6 @@ import java.util.List;
 
 public class Floor extends UnaryToken
 {
-
     public static final String OPERATION = "floor";
 
     public Floor()
@@ -18,6 +17,10 @@ public class Floor extends UnaryToken
     }
 
     @Override
+    /**
+     * Performs floor operation on its operand
+     * @returns the result
+     */
     double[] UnaryEvaluate(List<EvaluatableToken> operands)
     {
         double[] op = operands.get(0).evaluate();

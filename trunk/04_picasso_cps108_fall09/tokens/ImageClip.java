@@ -4,7 +4,7 @@ import picasso.Coordinates;
 
 /**
  * ImageClip.java
- * 
+ * Represents ImageClip function
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */
@@ -19,6 +19,9 @@ public class ImageClip extends ImageWrap
     }
 
     @Override
+    /**
+     * Overrides imageWrap's calculate coordinates to calculate them in a different way
+     */
     protected void calculateCoords(double x, double y)
     {
         if (x < Coordinates.DOMAIN_MIN)

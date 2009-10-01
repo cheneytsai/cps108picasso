@@ -4,7 +4,7 @@ import java.util.ResourceBundle;
 
 /**
  * Division.java
- * 
+ * Represents division operation
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements the Division
  *         Function under the / operator
  */
@@ -18,12 +18,14 @@ public class Division extends BinaryToken
 
     public Division()
     {
-
-        // super(NUM_OF_OPERANDS, OPERATION, ORDER_OF_OPERATION);
         super(OPERATION, Integer.parseInt(myResources.getString(OPERATION)));
     }
 
     @Override
+    /**
+     * Performs division on its two operands
+     * @returns the result
+     */
     public double[] binaryEvaluate(double[] left, double[] right)
     {
         double[] ret =

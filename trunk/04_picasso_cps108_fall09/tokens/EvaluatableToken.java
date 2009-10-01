@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import picasso.PicassoException;
 /**
  * EvaluatableToken.java
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * Abstract Token for Operators that perform a function
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  */
 public abstract class EvaluatableToken extends Token{
     
@@ -49,6 +49,9 @@ public abstract class EvaluatableToken extends Token{
         myOperands.add(e);
     }
     
+    /**
+     * Checks to make sure the number of operands matches the operands in the myOperands. Throws exception if it does not
+     */
     public void checkNumOperands()
     {
         if (getOperands().size() != getNumOperands())
@@ -58,7 +61,7 @@ public abstract class EvaluatableToken extends Token{
 
     /**
      * Returns name of operation
-     * 
+     * Only really used for debugging
      * @return
      */
     public abstract double[] evaluate();

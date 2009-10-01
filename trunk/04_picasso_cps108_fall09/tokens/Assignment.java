@@ -4,7 +4,7 @@ import picasso.PicassoException;
 
 /**
  * Assignment.java
- * 
+ * Represents the assignment operation
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Handles the Assignment
  *         Function under the "=" symbol
  */
@@ -21,6 +21,10 @@ public class Assignment extends EvaluatableToken
     }
 
     @Override
+    /**
+     * Evaluates the right operand, assigning its value to the variable on the left in VariableHandler
+     * @return the value on the left
+     */
     public double[] evaluate()
     {
         if (getOperands().size() != NUM_OF_OPERANDS)

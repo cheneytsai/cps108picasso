@@ -31,7 +31,7 @@ public abstract class TokenHandler {
      * @throws IllegalAccessException 
      * @throws InstantiationException 
      */
-    public static final Token getToken(String str) {
+    public static final Token getExpression(String str) {
         if (myTokenMap.containsKey(str))
         {
             Class c = null;

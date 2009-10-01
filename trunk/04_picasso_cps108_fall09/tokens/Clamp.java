@@ -6,7 +6,7 @@ import picasso.Coordinates;
 
 /**
  * Clamp.java
- * 
+ * Represents clamp function
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements the Clamp Function
  */
 
@@ -21,6 +21,10 @@ public class Clamp extends UnaryToken
     }
 
     @Override
+    /**
+     * Clamps the value of the operand to be within the min-max domain in Coordinates
+     * @returns the result
+     */
     double[] UnaryEvaluate(List<EvaluatableToken> operands)
     {
         double[] ret = ClampFunc(operands.get(0).evaluate());

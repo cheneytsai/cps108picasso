@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Cos.java
- * 
+ * Represents cosine function
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements the COS trig
  *         function
  */
@@ -20,6 +20,10 @@ public class Cos extends UnaryToken
     }
 
     @Override
+    /**
+     * Performs the cosine operation on the operand
+     * @returns the result
+     */
     double[] UnaryEvaluate(List<EvaluatableToken> operands)
     {
         double[] op = operands.get(0).evaluate();
