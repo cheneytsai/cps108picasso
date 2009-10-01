@@ -191,4 +191,24 @@ public class PicassoTest extends TestCase
         }
     }
 
+    public void testNegation_vars() throws FileNotFoundException
+    {
+        initializeScanner("Negation_vars");
+        while (testInput.hasNextLine())
+        {
+            parse.makeExpression(testInput.nextLine());
+            isEqual(testResults.nextDouble(), parse.evaluate()[0]);
+        }
+    }
+
+    public void testComplex() throws FileNotFoundException
+    {
+        initializeScanner("Negation_vars");
+        while (testInput.hasNextLine())
+        {
+            parse.makeExpression(testInput.nextLine());
+            isEqual(testResults.nextDouble(), parse.evaluate()[0]);
+        }
+    }
+
 }
