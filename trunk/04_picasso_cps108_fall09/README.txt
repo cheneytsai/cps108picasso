@@ -1,5 +1,5 @@
 Names: Jimmy Shedlick, Cheney Tsai, Michael Yu
-NetID: jps26, cct8
+NetID: jps26, cct8, my8
 
 How many hours you spent on this assignment:
 At least 15 hours each...probably more
@@ -10,6 +10,8 @@ Other Teams to compare outputs
 
 Resources used (e.g. books, webpages, or code repositories):
 Class Website, JAVA API, Links describing implementation of functions ...
+
+Test Classes: PicassoTest contains test methods for the program in JUnit form
 
 To Start:
 Run Main and GUI will open. Type expressions into the text field and press enter to generate image.
