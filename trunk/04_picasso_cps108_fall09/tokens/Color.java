@@ -3,7 +3,11 @@ package tokens;
 import java.util.List;
 
 import picasso.PicassoException;
-
+/**
+ * Color.java
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
+ * Implements the Function to Load a color under the syntax of [ cons, cons, cons ]
+ */
 public class Color extends MultiArgToken {
 
     public static final String OPERATION = "[";

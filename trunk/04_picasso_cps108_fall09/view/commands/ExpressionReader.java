@@ -7,30 +7,29 @@ import javax.swing.JFileChooser;
 import view.InputHandler;
 import model.Pixmap;
 
-
 /**
+ * ExpressionReader.java
+ * 
  * An abstract command which can be evaluated. This command opens a file to load
  * an expression to evaluate.
  * 
- * @author Jimmy Shedlick
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  */
 public class ExpressionReader extends EvaluatableCommand
 {
-    private static final JFileChooser ourChooser =
-        new JFileChooser(System.getProperties().getProperty("user.dir"));
+    private static final JFileChooser ourChooser = new JFileChooser(System
+            .getProperties().getProperty("user.dir"));
     private int myDialogType;
 
-
-    public ExpressionReader ()
+    public ExpressionReader()
     {
         myDialogType = JFileChooser.OPEN_DIALOG;
     }
 
-
     /**
      * Returns the file chosen by the user.
      */
-    protected String getFileName ()
+    protected String getFileName()
     {
         ourChooser.setDialogType(myDialogType);
         int response = ourChooser.showDialog(null, null);
@@ -41,8 +40,7 @@ public class ExpressionReader extends EvaluatableCommand
         return null;
     }
 
-
-    public void execute (Pixmap target)
+    public void execute(Pixmap target)
     {
         String fileName = getFileName();
         if (fileName != null)
@@ -54,8 +52,7 @@ public class ExpressionReader extends EvaluatableCommand
                 InputHandler.setExpression(exp);
                 super.execute(target);
                 InputHandler.addToHistory();
-            }
-            catch (FileNotFoundException e)
+            } catch (FileNotFoundException e)
             {
                 e.printStackTrace();
             }

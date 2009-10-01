@@ -1,12 +1,14 @@
 package tokens;
 
 /**
+ * Constant.java
+ * 
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  * Represents constants. Holds a name and a value.
- * 
- * @author Michael
- * 
  */
-public class Constant extends EvaluatableToken {
+
+public class Constant extends EvaluatableToken
+{
 
     public static final String OPERATION = null;
     public static final int NUM_OF_OPERANDS = 0;
@@ -16,8 +18,10 @@ public class Constant extends EvaluatableToken {
      * Calls superclass constructor then sets myValue and myName to default
      * values
      */
-    public Constant() {
-        super(NUM_OF_OPERANDS, OPERATION, Integer.parseInt(myOOPResources.getString("Constant")));
+    public Constant()
+    {
+        super(NUM_OF_OPERANDS, OPERATION, Integer.parseInt(myOOPResources
+                .getString("Constant")));
         myValue = new double[3];
     }
 
@@ -26,7 +30,8 @@ public class Constant extends EvaluatableToken {
      * 
      * @param value
      */
-    public Constant(double value) {
+    public Constant(double value)
+    {
         this();
         for (int k = 0; k < myValue.length; k++)
         {
@@ -34,14 +39,14 @@ public class Constant extends EvaluatableToken {
         }
     }
 
-
     /**
      * Return value of thisvariable
      * 
      * @return
      */
     @Override
-    public double[] evaluate() {
+    public double[] evaluate()
+    {
         return myValue;
     }
 

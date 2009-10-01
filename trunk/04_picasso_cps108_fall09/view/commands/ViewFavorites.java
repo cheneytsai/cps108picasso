@@ -19,25 +19,25 @@ import view.Canvas;
 import view.InputHandler;
 import model.Pixmap;
 
-
 /**
+ * ViewFavorites.java
+ * 
  * An abstract command which can be evaluated. This command opens a new
  * Favorites window and evaluates on that Pixmap.
  * 
- * @author Jimmy Shedlick
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  */
-public class ViewFavorites extends EvaluatableCommand
-    implements Command<Pixmap>
+public class ViewFavorites extends EvaluatableCommand implements
+        Command<Pixmap>
 {
-    private static ResourceBundle myResources =
-        ResourceBundle.getBundle("resources.English");
+    private static ResourceBundle myResources = ResourceBundle
+            .getBundle("resources.English");
 
-
-    public void execute (Pixmap target)
+    public void execute(Pixmap target)
     {
-        FavoriteFrame frame =
-            new FavoriteFrame(myResources.getString("FavoritesTitle"),
-                              FrameDimensions.FRAME_LARGE.size());
+        FavoriteFrame frame = new FavoriteFrame(myResources
+                .getString("FavoritesTitle"), FrameDimensions.FRAME_LARGE
+                .size());
         frame.setVisible(true);
     }
 
@@ -49,8 +49,7 @@ public class ViewFavorites extends EvaluatableCommand
         private JTextField expressionName;
         private int index;
 
-
-        public FavoriteFrame (String title, Dimension size)
+        public FavoriteFrame(String title, Dimension size)
         {
             setTitle(title);
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -66,32 +65,34 @@ public class ViewFavorites extends EvaluatableCommand
             getContentPane().add(makeMessage(), BorderLayout.SOUTH);
 
             index = 0;
-            if (!InputHandler.isFavoriteIndexValid(index)) expressionName.setText(myResources.getString("NoFavorites"));
-            else updatePane();
+            if (!InputHandler.isFavoriteIndexValid(index))
+                expressionName.setText(myResources.getString("NoFavorites"));
+            else
+                updatePane();
             pack();
         }
 
-
-        //Add Keylistener so arrow keys scroll through favorites.
-        public void keyPressed (KeyEvent e)
+        // Add Keylistener so arrow keys scroll through favorites.
+        public void keyPressed(KeyEvent e)
         {
-            if (e.getKeyCode() == KeyEvent.VK_LEFT) previous();
-            else if (e.getKeyCode() == KeyEvent.VK_RIGHT) next();
+            if (e.getKeyCode() == KeyEvent.VK_LEFT)
+                previous();
+            else if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+                next();
         }
 
+        public void keyReleased(KeyEvent e)
+        {
+        }
 
-        public void keyReleased (KeyEvent e)
-        {}
-
-
-        public void keyTyped (KeyEvent e)
-        {}
-
+        public void keyTyped(KeyEvent e)
+        {
+        }
 
         /**
          * Create the message JPanel in the Favorites frame.
          */
-        private JPanel makeMessage ()
+        private JPanel makeMessage()
         {
             JPanel result = new JPanel();
 
@@ -101,7 +102,8 @@ public class ViewFavorites extends EvaluatableCommand
             expressionName.setEditable(false);
 
             JPanel messagePanel = new JPanel();
-            messagePanel.setBorder(BorderFactory.createTitledBorder(myResources.getString("MessageTitle")));
+            messagePanel.setBorder(BorderFactory.createTitledBorder(myResources
+                    .getString("MessageTitle")));
             messagePanel.add(expressionNumber, BorderLayout.WEST);
             messagePanel.add(expressionName, BorderLayout.EAST);
             result.add(messagePanel, BorderLayout.WEST);
@@ -109,7 +111,7 @@ public class ViewFavorites extends EvaluatableCommand
             JButton left = new JButton(myResources.getString("LeftCommand"));
             left.addActionListener(new ActionListener()
             {
-                public void actionPerformed (ActionEvent e)
+                public void actionPerformed(ActionEvent e)
                 {
                     previous();
                 }
@@ -119,7 +121,7 @@ public class ViewFavorites extends EvaluatableCommand
             JButton right = new JButton(myResources.getString("RightCommand"));
             right.addActionListener(new ActionListener()
             {
-                public void actionPerformed (ActionEvent e)
+                public void actionPerformed(ActionEvent e)
                 {
                     next();
                 }
@@ -130,11 +132,10 @@ public class ViewFavorites extends EvaluatableCommand
             return result;
         }
 
-
         /**
          * Display the previous favorite expression
          */
-        private void previous ()
+        private void previous()
         {
             if (InputHandler.isFavoriteIndexValid(index - 1))
             {
@@ -143,11 +144,10 @@ public class ViewFavorites extends EvaluatableCommand
             }
         }
 
-
         /**
          * Display the next favorite expression
          */
-        private void next ()
+        private void next()
         {
             if (InputHandler.isFavoriteIndexValid(index + 1))
             {
@@ -156,16 +156,16 @@ public class ViewFavorites extends EvaluatableCommand
             }
         }
 
-
         /**
          * Update the Pixmap and display while evaluating a different favorite
          * expression.
          */
-        private void updatePane ()
+        private void updatePane()
         {
             expressionName.setText(InputHandler.getFavoriteExpression(index));
             expressionNumber.setText((index + 1) + "");
-            new ThreadedCommand<Pixmap>(new EvaluatableCommand(), myCanvas).execute(myCanvas.getPixmap());
+            new ThreadedCommand<Pixmap>(new EvaluatableCommand(), myCanvas)
+                    .execute(myCanvas.getPixmap());
             myCanvas.refresh();
         }
     }

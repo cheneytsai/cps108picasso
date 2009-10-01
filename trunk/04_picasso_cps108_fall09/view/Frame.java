@@ -15,19 +15,21 @@ import view.commands.ViewFavorites;
 import view.commands.Reader;
 import view.commands.Writer;
 
-
 /**
+ * Frame.java
+ * 
  * Frame extends JFrame to create the main window, and adds buttons which
  * perform evaluations.
+ * 
+ * 
  */
 @SuppressWarnings("serial")
 public class Frame extends JFrame
 {
-    private static ResourceBundle myResources =
-        ResourceBundle.getBundle("resources.English");
+    private static ResourceBundle myResources = ResourceBundle
+            .getBundle("resources.English");
 
-
-    public Frame (String title, Dimension size)
+    public Frame(String title, Dimension size)
     {
         setTitle(title);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -46,25 +48,25 @@ public class Frame extends JFrame
         pack();
     }
 
-
     /**
      * Create the file menu for the frame.
      * 
-     * @param The canvas to be operated on.
+     * @param The
+     *            canvas to be operated on.
      */
-    protected JMenu makeFileMenu (Canvas view)
+    protected JMenu makeFileMenu(Canvas view)
     {
         FileMenu result = new FileMenu(myResources.getString("FileMenu"), view);
 
         result.add(myResources.getString("OpenImageCommand"), new Reader());
         result.add(myResources.getString("OpenExpressionCommand"),
-                   new ThreadedCommand<Pixmap>(new ExpressionReader(), view));
+                new ThreadedCommand<Pixmap>(new ExpressionReader(), view));
         result.add(myResources.getString("SaveCommand"), new Writer());
         result.add(myResources.getString("FavoritesCommand"),
-                   new ThreadedCommand<Pixmap>(new ViewFavorites(), view));
+                new ThreadedCommand<Pixmap>(new ViewFavorites(), view));
         result.add(new AbstractAction(myResources.getString("QuitCommand"))
         {
-            public void actionPerformed (ActionEvent ev)
+            public void actionPerformed(ActionEvent ev)
             {
                 System.exit(0);
             }
