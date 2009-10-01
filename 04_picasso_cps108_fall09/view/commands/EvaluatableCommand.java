@@ -14,13 +14,19 @@ import model.RGBColor;
 
 
 /**
- * An abstract command with a name (e.g., to display on a button)
+ * A command which can evaluate the current expression stored in InputHandler using the parser in InputHandler.
  * 
  * @author Robert C Duvall
+ * @author Jimmy Shedlick
  */
 public class EvaluatableCommand implements Command<Pixmap>
 {
 
+    /**
+     * Calls the parser to make the expression out of the current string, then updates the Pixmap to the new image.
+     * 
+     * @param Pixmap to be updated with the evaluated expression.
+     */
     public void execute (Pixmap target)
     {
         try

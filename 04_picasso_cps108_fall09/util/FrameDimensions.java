@@ -2,7 +2,7 @@ package util;
 
 import java.awt.Dimension;
 
-public enum Utils
+public enum FrameDimensions
 {
     FRAME_LARGE
     {

@@ -8,22 +8,28 @@ import view.InputHandler;
 import model.Pixmap;
 
 
+/**
+ * An abstract command which can be evaluated. This command opens a file to load
+ * an expression to evaluate.
+ * 
+ * @author Jimmy Shedlick
+ */
 public class ExpressionReader extends EvaluatableCommand
 {
- // only one dialog box needed for an application
-    private static final JFileChooser ourChooser = 
+    private static final JFileChooser ourChooser =
         new JFileChooser(System.getProperties().getProperty("user.dir"));
-    // what kind of dialog to open, see JFileChooser constants
     private int myDialogType;
-    
+
+
     public ExpressionReader ()
     {
         myDialogType = JFileChooser.OPEN_DIALOG;
     }
+
+
     /**
      * Returns the file chosen by the user.
      */
-    
     protected String getFileName ()
     {
         ourChooser.setDialogType(myDialogType);

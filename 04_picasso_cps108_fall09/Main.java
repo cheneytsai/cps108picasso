@@ -2,7 +2,7 @@ import java.awt.Dimension;
 import java.util.ResourceBundle;
 
 import tokens.TokenHandler;
-import util.Utils;
+import util.FrameDimensions;
 import view.Frame;
 
 
@@ -11,7 +11,7 @@ import view.Frame;
  */
 public class Main
 {
-    public static final Dimension SIZE = Utils.FRAME_LARGE.size();
+    public static final Dimension SIZE = FrameDimensions.FRAME_LARGE.size();
     private static ResourceBundle myResources = ResourceBundle.getBundle("resources.English");
 
     public static void main (String[] args)

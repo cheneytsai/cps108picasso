@@ -18,6 +18,7 @@ public class Canvas extends JPanel
         this(container, null);
     }
 
+
     public Canvas (JFrame container, String pixName)
     {
         setBorder(BorderFactory.createLoweredBevelBorder());
@@ -39,9 +40,10 @@ public class Canvas extends JPanel
         return myPixmap;
     }
 
+
     public void refresh ()
     {
-        if (! myPixmap.getSize().equals(getSize()))
+        if (!myPixmap.getSize().equals(getSize()))
         {
             setSize(myPixmap.getSize());
             //myContainer.setTitle(myPixmap.getName());
@@ -49,6 +51,7 @@ public class Canvas extends JPanel
         }
         repaint();
     }
+
 
     public void paintComponent (Graphics pen)
     {

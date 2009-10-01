@@ -6,9 +6,9 @@ import model.Pixmap;
 
 
 /**
- * An abstract command with a name (e.g., to display on a button)
+ * An abstract command which can be evaluated.
  * 
- * @author Robert C Duvall
+ * @author Jimmy Shedlick
  */
 public class Favorite extends EvaluatableCommand implements Command<Pixmap>
 {
