@@ -5,8 +5,8 @@ import java.util.List;
 import picasso.PicassoException;
 /**
  * Color.java
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
- * Implements the Function to Load a color under the syntax of [ cons, cons, cons ]
+ * Implements the Function to create a color under the syntax of [ cons, cons, cons ]
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  */
 public class Color extends MultiArgToken {
 
@@ -18,6 +18,10 @@ public class Color extends MultiArgToken {
     }
 
     @Override
+    /**
+     * Uses the evaluated values of its three operands to generate RGB values
+     * @return the result
+     */
     double[] multiArgEvaluate(List<EvaluatableToken> operands) {
         if (operands.size() != 3 )
         {

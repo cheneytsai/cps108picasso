@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * BinaryToken.java
- * 
+ * Abstract superclass for operations taking two opernads
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Abstract Class for all Binary
  *         Operators
  */
@@ -19,6 +19,9 @@ public abstract class BinaryToken extends EvaluatableToken
     }
 
     @Override
+    /**
+     * Retrieves the results of evaluating the left and right, and passes it to binaryEvaluate
+     */
     public double[] evaluate()
     {
         checkNumOperands();

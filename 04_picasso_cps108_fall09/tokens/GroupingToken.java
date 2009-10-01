@@ -2,7 +2,7 @@ package tokens;
 
 /**
  * GroupingToken.java
- * 
+ * Abstract superclass for grouping tokens (OpenGroup, CloseGroup)
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */

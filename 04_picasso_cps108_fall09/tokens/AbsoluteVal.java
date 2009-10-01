@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * AbsoluteVal.java
- * 
+ * Represents absolute value function
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements Absolute Value
  *         Function
  */
@@ -20,6 +20,10 @@ public class AbsoluteVal extends UnaryToken
     }
 
     @Override
+    /**
+     * Returns the absolute value of the operand
+     * @return
+     */
     double[] UnaryEvaluate(List<EvaluatableToken> operands)
     {
         double[] op = operands.get(0).evaluate();

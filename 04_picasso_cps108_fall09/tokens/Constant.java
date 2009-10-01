@@ -2,9 +2,9 @@ package tokens;
 
 /**
  * Constant.java
- * 
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  * Represents constants. Holds a name and a value.
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
+ * 
  */
 
 public class Constant extends EvaluatableToken
@@ -40,7 +40,7 @@ public class Constant extends EvaluatableToken
     }
 
     /**
-     * Return value of thisvariable
+     * Return value of this variable
      * 
      * @return
      */

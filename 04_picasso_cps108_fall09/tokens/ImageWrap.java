@@ -6,7 +6,7 @@ import picasso.Coordinates;
 
 /**
  * ImageWrap.java
- * 
+ * Represents ImageWrap function
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */
@@ -26,6 +26,10 @@ public class ImageWrap extends MultiArgToken
     }
 
     @Override
+    /**
+     * Returns color of image in the operands list at the coordinates. Calculates coordinates using calculateCoords
+     * @return the value
+     */
     double[] multiArgEvaluate(List<EvaluatableToken> operands)
     {
         double[] origX = VariableHandler.getValue("x");
@@ -36,7 +40,12 @@ public class ImageWrap extends MultiArgToken
         shiftCoords(origX[0], origY[0]);
         return ret;
     }
-
+    
+    /**
+     * Calculate the coordinates as per the arguments
+     * @param x the second argument
+     * @param y the third argument
+     */
     protected void calculateCoords(double x, double y)
     {
         double range = Coordinates.DOMAIN_MAX - Coordinates.DOMAIN_MIN;
@@ -50,7 +59,12 @@ public class ImageWrap extends MultiArgToken
             y -= range;
         shiftCoords(x, y);
     }
-
+    
+    /**
+     * Updates x/y values in VariableHandler
+     * @param xValue
+     * @param yValue
+     */
     protected void shiftCoords(double xValue, double yValue)
     {
         VariableHandler.setVariable("x", xValue);

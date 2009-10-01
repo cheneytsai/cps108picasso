@@ -2,13 +2,12 @@ package tokens;
 
 /**
  * Exponentiate.java
- * 
+ * Represents power functions
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */
 public class Exponentiate extends BinaryToken
 {
-
     public static final String OPERATION = "^";
 
     public Exponentiate()
@@ -18,6 +17,10 @@ public class Exponentiate extends BinaryToken
     }
 
     @Override
+    /**
+     * Raises the operand on the left by the operand on the right power
+     * @return the result
+     */
     double[] binaryEvaluate(double[] left, double[] right)
     {
         double[] ret =

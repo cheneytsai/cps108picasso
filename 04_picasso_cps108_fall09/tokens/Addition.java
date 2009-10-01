@@ -4,7 +4,7 @@ import java.util.ResourceBundle;
 
 /**
  * Addition.java
- * 
+ * Represents addition function
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements Addition using the
  *         + operator
  */
@@ -18,12 +18,13 @@ public class Addition extends BinaryToken
 
     public Addition()
     {
-
-        // super(NUM_OF_OPERANDS, OPERATION, ORDER_OF_OPERATION);
         super(OPERATION, Integer.parseInt(myResources.getString(OPERATION)));
     }
 
     @Override
+    /**
+     * Performs addition operation on the values of the two operands.
+     */
     double[] binaryEvaluate(double[] left, double[] right)
     {
         double[] ret =
