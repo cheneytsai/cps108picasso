@@ -2,17 +2,27 @@ package tokens;
 
 import picasso.PicassoException;
 
-public class Assignment extends EvaluatableToken {
-    
+/**
+ * Assignment.java
+ * 
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Handles the Assignment
+ *         Function under the "=" symbol
+ */
+public class Assignment extends EvaluatableToken
+{
+
     public static final String OPERATION = "=";
     public static final int NUM_OF_OPERANDS = 2;
-    
-    public Assignment() {
-        super(NUM_OF_OPERANDS, OPERATION, Integer.parseInt(myOOPResources.getString(OPERATION)));
+
+    public Assignment()
+    {
+        super(NUM_OF_OPERANDS, OPERATION, Integer.parseInt(myOOPResources
+                .getString(OPERATION)));
     }
 
     @Override
-    public double[] evaluate() {
+    public double[] evaluate()
+    {
         if (getOperands().size() != NUM_OF_OPERANDS)
             throw new PicassoException(
                     "Incorrect number of operands to perform: " + OPERATION);
@@ -25,6 +35,5 @@ public class Assignment extends EvaluatableToken {
         VariableHandler.setVariable(var.getName(), value);
         return value.evaluate();
     }
-    
 
 }

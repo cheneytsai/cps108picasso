@@ -5,28 +5,31 @@ import java.awt.event.*;
 import javax.swing.*;
 import model.Pixmap;
 
-
+/**
+ * Canvas.java
+ * 
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
+ * 
+ */
 @SuppressWarnings("serial")
 public class Canvas extends JPanel
 {
     private JFrame myContainer;
     private Pixmap myPixmap;
 
-
-    public Canvas (JFrame container)
+    public Canvas(JFrame container)
     {
         this(container, null);
     }
 
-
-    public Canvas (JFrame container, String pixName)
+    public Canvas(JFrame container, String pixName)
     {
         setBorder(BorderFactory.createLoweredBevelBorder());
         myContainer = container;
         myPixmap = new Pixmap(pixName);
         addComponentListener(new ComponentAdapter()
         {
-            public void componentResized (ComponentEvent e)
+            public void componentResized(ComponentEvent e)
             {
                 myPixmap.setSize(getSize());
             }
@@ -34,33 +37,29 @@ public class Canvas extends JPanel
         refresh();
     }
 
-
-    public Pixmap getPixmap ()
+    public Pixmap getPixmap()
     {
         return myPixmap;
     }
 
-
-    public void refresh ()
+    public void refresh()
     {
         if (!myPixmap.getSize().equals(getSize()))
         {
             setSize(myPixmap.getSize());
-            //myContainer.setTitle(myPixmap.getName());
+            // myContainer.setTitle(myPixmap.getName());
             myContainer.pack();
         }
         repaint();
     }
 
-
-    public void paintComponent (Graphics pen)
+    public void paintComponent(Graphics pen)
     {
         super.paintComponent(pen);
         myPixmap.paint(pen);
     }
 
-
-    public void setSize (Dimension size)
+    public void setSize(Dimension size)
     {
         setPreferredSize(size);
         setMinimumSize(size);

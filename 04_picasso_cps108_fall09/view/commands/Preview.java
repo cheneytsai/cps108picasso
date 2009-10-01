@@ -9,24 +9,23 @@ import util.FrameDimensions;
 import view.Canvas;
 import model.Pixmap;
 
-
 /**
+ * Preview.java
+ * 
  * An abstract command which can be evaluated. This command opens a new preview
  * window and uses that Pixmap to display the evaluation.
  * 
- * @author Jimmy Shedlick
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  */
 public class Preview extends EvaluatableCommand implements Command<Pixmap>
 {
-    private static ResourceBundle myResources =
-        ResourceBundle.getBundle("resources.English");
+    private static ResourceBundle myResources = ResourceBundle
+            .getBundle("resources.English");
 
-
-    public void execute (Pixmap target)
+    public void execute(Pixmap target)
     {
-        PreviewFrame frame =
-            new PreviewFrame(myResources.getString("PreviewTitle"),
-                             FrameDimensions.FRAME_MEDIUM.size());
+        PreviewFrame frame = new PreviewFrame(myResources
+                .getString("PreviewTitle"), FrameDimensions.FRAME_MEDIUM.size());
         frame.setVisible(true);
         super.execute(frame.getView().getPixmap());
         frame.getView().refresh();
@@ -37,8 +36,7 @@ public class Preview extends EvaluatableCommand implements Command<Pixmap>
     {
         private Canvas myCanvas;
 
-
-        public PreviewFrame (String title, Dimension size)
+        public PreviewFrame(String title, Dimension size)
         {
             setTitle(title);
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -50,8 +48,7 @@ public class Preview extends EvaluatableCommand implements Command<Pixmap>
             pack();
         }
 
-
-        private Canvas getView ()
+        private Canvas getView()
         {
             return myCanvas;
         }

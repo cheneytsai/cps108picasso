@@ -4,16 +4,18 @@ import util.Command;
 import view.InputHandler;
 import model.Pixmap;
 
-
 /**
+ * Favorite.java
+ * 
  * An abstract command which can be evaluated.
  * 
- * @author Jimmy Shedlick
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  */
 public class Favorite extends EvaluatableCommand implements Command<Pixmap>
 {
 
-    public void execute (Pixmap target) {
+    public void execute(Pixmap target)
+    {
 
         InputHandler.addToFavorites();
     }

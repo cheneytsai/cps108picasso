@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.ArrayList;
 
 import picasso.PicassoException;
-
+/**
+ * EvaluatableToken.java
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
+ * Abstract Token for Operators that perform a function
+ */
 public abstract class EvaluatableToken extends Token{
     
     private List<EvaluatableToken> myOperands;

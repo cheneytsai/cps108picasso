@@ -4,7 +4,6 @@ import javax.swing.JFileChooser;
 import util.FileCommand;
 import model.Pixmap;
 
-
 /**
  * Open the chosen file.
  * 
@@ -12,13 +11,12 @@ import model.Pixmap;
  */
 public class Reader extends FileCommand<Pixmap>
 {
-    public Reader ()
+    public Reader()
     {
         super(JFileChooser.OPEN_DIALOG);
     }
 
-
-    public void execute (Pixmap target)
+    public void execute(Pixmap target)
     {
         String fileName = getFileName();
         if (fileName != null)
