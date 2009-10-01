@@ -9,17 +9,20 @@ import util.NamedCommand;
 
 
 /**
- * The collection of commands represented as buttons that apply to the active image.
+ * The collection of commands represented as AbstractActions that apply to the
+ * active image.
  * 
  * @author Robert C Duvall
+ * @author Jimmy Shedlick
  */
 @SuppressWarnings("serial")
 public class FileMenu extends JMenu
 {
     private Canvas myView;
 
+
     /**
-     * Create panel that will update the given view.
+     * Create menu that will update the given view.
      */
     public FileMenu (String name, Canvas view)
     {
@@ -29,26 +32,26 @@ public class FileMenu extends JMenu
 
 
     /**
-    * Add the given Command as a button with the given name.
-    */
-   public void add (String name, final Command<Pixmap> action)
-   {
-       this.add(new AbstractAction(name)
-       {
-           public void actionPerformed (ActionEvent ev)
-           {
-               action.execute(myView.getPixmap());
-               myView.refresh();
-           }
-       });
-   }
+     * Add the given Command as a AbstractAction with the given name.
+     */
+    public void add (String name, final Command<Pixmap> action)
+    {
+        this.add(new AbstractAction(name)
+        {
+            public void actionPerformed (ActionEvent ev)
+            {
+                action.execute(myView.getPixmap());
+                myView.refresh();
+            }
+        });
+    }
 
 
-   /**
-    * Add the given Command as a button.
-    */
-   public void add (NamedCommand<Pixmap> action)
-   {
-       add(action.getName(), action);
-   }
+    /**
+     * Add the given Command as an AbstractAction.
+     */
+    public void add (NamedCommand<Pixmap> action)
+    {
+        add(action.getName(), action);
+    }
 }

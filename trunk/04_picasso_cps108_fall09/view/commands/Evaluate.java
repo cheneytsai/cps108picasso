@@ -6,14 +6,15 @@ import model.Pixmap;
 
 
 /**
- * An abstract command with a name (e.g., to display on a button)
+ * An abstract command which can be evaluated.
  * 
- * @author Robert C Duvall
+ * @author Jimmy Shedlick
  */
 public class Evaluate extends EvaluatableCommand implements Command<Pixmap>
 {
 
-    public void execute (Pixmap target) {
+    public void execute (Pixmap target)
+    {
 
         super.execute(target);
         InputHandler.addToHistory();

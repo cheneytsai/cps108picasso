@@ -14,26 +14,33 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import util.Command;
 import util.ThreadedCommand;
-import util.Utils;
+import util.FrameDimensions;
 import view.Canvas;
 import view.InputHandler;
 import model.Pixmap;
 
 
 /**
- * An abstract command with a name (e.g., to display on a button)
+ * An abstract command which can be evaluated. This command opens a new
+ * Favorites window and evaluates on that Pixmap.
  * 
- * @author Robert C Duvall
+ * @author Jimmy Shedlick
  */
-public class ViewFavorites extends EvaluatableCommand implements Command<Pixmap>
+public class ViewFavorites extends EvaluatableCommand
+    implements Command<Pixmap>
 {
-    private static ResourceBundle myResources = ResourceBundle.getBundle("resources.English");
+    private static ResourceBundle myResources =
+        ResourceBundle.getBundle("resources.English");
 
-    public void execute (Pixmap target) {
-        FavoriteFrame frame = new FavoriteFrame(myResources.getString("FavoritesTitle"), Utils.FRAME_LARGE.size());
+
+    public void execute (Pixmap target)
+    {
+        FavoriteFrame frame =
+            new FavoriteFrame(myResources.getString("FavoritesTitle"),
+                              FrameDimensions.FRAME_LARGE.size());
         frame.setVisible(true);
     }
-    
+
     @SuppressWarnings("serial")
     class FavoriteFrame extends JFrame implements KeyListener
     {
@@ -42,49 +49,52 @@ public class ViewFavorites extends EvaluatableCommand implements Command<Pixmap>
         private JTextField expressionName;
         private int index;
 
+
         public FavoriteFrame (String title, Dimension size)
         {
             setTitle(title);
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            setLocation(100,100);
+            setLocation(100, 100);
 
-            // create GUI components
             myCanvas = new Canvas(this);
             myCanvas.setSize(size);
-            
+
             setFocusable(true);
             addKeyListener(this);
-          
-            // add our container to Frame and show it
+
             getContentPane().add(myCanvas, BorderLayout.CENTER);
             getContentPane().add(makeMessage(), BorderLayout.SOUTH);
-            
+
             index = 0;
-            if(!InputHandler.isHistoryIndexValid(index))
-                expressionName.setText(myResources.getString("NoFavorites"));
-            else
-                updatePane();
+            if (!InputHandler.isFavoriteIndexValid(index)) expressionName.setText(myResources.getString("NoFavorites"));
+            else updatePane();
             pack();
         }
-        
+
+
+        //Add Keylistener so arrow keys scroll through favorites.
         public void keyPressed (KeyEvent e)
         {
-            if(e.getKeyCode() == KeyEvent.VK_LEFT)
-                previous();
-            else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
-                next();
+            if (e.getKeyCode() == KeyEvent.VK_LEFT) previous();
+            else if (e.getKeyCode() == KeyEvent.VK_RIGHT) next();
         }
+
+
         public void keyReleased (KeyEvent e)
-        {
-        }
+        {}
+
+
         public void keyTyped (KeyEvent e)
-        {
-        }
-        
-        protected JPanel makeMessage()
+        {}
+
+
+        /**
+         * Create the message JPanel in the Favorites frame.
+         */
+        private JPanel makeMessage ()
         {
             JPanel result = new JPanel();
-            
+
             expressionNumber = new JTextField(3);
             expressionNumber.setEditable(false);
             expressionName = new JTextField(20);
@@ -119,26 +129,41 @@ public class ViewFavorites extends EvaluatableCommand implements Command<Pixmap>
 
             return result;
         }
-        
-        private void previous() {
-            if(InputHandler.isFavoriteIndexValid(index - 1))
+
+
+        /**
+         * Display the previous favorite expression
+         */
+        private void previous ()
+        {
+            if (InputHandler.isFavoriteIndexValid(index - 1))
             {
                 index--;
                 updatePane();
             }
         }
-        
-        private void next() {
-            if(InputHandler.isFavoriteIndexValid(index + 1))
+
+
+        /**
+         * Display the next favorite expression
+         */
+        private void next ()
+        {
+            if (InputHandler.isFavoriteIndexValid(index + 1))
             {
                 index++;
                 updatePane();
             }
         }
-        
-        private void updatePane()
+
+
+        /**
+         * Update the Pixmap and display while evaluating a different favorite
+         * expression.
+         */
+        private void updatePane ()
         {
-            expressionName.setText(InputHandler.setFavoriteExpression(index));
+            expressionName.setText(InputHandler.getFavoriteExpression(index));
             expressionNumber.setText((index + 1) + "");
             new ThreadedCommand<Pixmap>(new EvaluatableCommand(), myCanvas).execute(myCanvas.getPixmap());
             myCanvas.refresh();
