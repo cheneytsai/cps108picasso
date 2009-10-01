@@ -5,8 +5,7 @@ import java.util.List;
 /**
  * Cos.java
  * Represents cosine function
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements the COS trig
- *         function
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  */
 
 public class Cos extends UnaryToken

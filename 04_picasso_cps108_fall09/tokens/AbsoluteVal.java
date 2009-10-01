@@ -5,8 +5,7 @@ import java.util.List;
 /**
  * AbsoluteVal.java
  * Represents absolute value function
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements Absolute Value
- *         Function
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  */
 
 public class AbsoluteVal extends UnaryToken

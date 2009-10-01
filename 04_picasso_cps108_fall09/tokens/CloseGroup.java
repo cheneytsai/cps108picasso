@@ -3,8 +3,7 @@ package tokens;
 /**
  * CloseGroup.java
  * Represents a close group token
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements the Close Paran
- *         Operator
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  */
 public class CloseGroup extends GroupingToken
 {

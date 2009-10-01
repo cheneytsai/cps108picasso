@@ -5,8 +5,7 @@ import picasso.PicassoException;
 /**
  * Assignment.java
  * Represents the assignment operation
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Handles the Assignment
- *         Function under the "=" symbol
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  */
 public class Assignment extends EvaluatableToken
 {

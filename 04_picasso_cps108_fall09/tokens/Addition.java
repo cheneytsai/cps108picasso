@@ -5,8 +5,7 @@ import java.util.ResourceBundle;
 /**
  * Addition.java
  * Represents addition function
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements Addition using the
- *         + operator
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  */
 
 public class Addition extends BinaryToken
