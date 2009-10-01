@@ -166,6 +166,15 @@ public class PicassoTest extends TestCase {
             isEqual(testResults.nextDouble(), parse.evaluate()[0]);
         }    
     }
+    public void testLog() throws FileNotFoundException
+    {
+        initializeScanner("Log");
+        while (testInput.hasNextLine())
+        {
+            parse.makeExpression(testInput.nextLine());
+            isEqual(testResults.nextDouble(), parse.evaluate()[0]);
+        }    
+    }
     
     private void setCoordinates(int x, int y, Dimension size)
     {
