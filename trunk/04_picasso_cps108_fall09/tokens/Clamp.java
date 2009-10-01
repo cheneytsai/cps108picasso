@@ -7,7 +7,7 @@ import picasso.Coordinates;
 /**
  * Clamp.java
  * Represents clamp function
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements the Clamp Function
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  */
 
 public class Clamp extends UnaryToken

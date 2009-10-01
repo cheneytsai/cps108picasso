@@ -5,8 +5,7 @@ import java.util.List;
 /**
  * Ceil.java
  * Represents ceiling function
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Implements the Ceiling
- *         Rounding Function
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  */
 public class Ceil extends UnaryToken
 {

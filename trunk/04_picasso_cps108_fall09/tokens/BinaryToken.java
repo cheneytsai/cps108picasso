@@ -5,8 +5,7 @@ import java.util.List;
 /**
  * BinaryToken.java
  * Abstract superclass for operations taking two opernads
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Abstract Class for all Binary
- *         Operators
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu 
  */
 public abstract class BinaryToken extends EvaluatableToken
 {
