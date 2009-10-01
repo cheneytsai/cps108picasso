@@ -1,0 +1,4 @@
+ceil ( -5 )
+ceil ( .1 )
+ceil ( -.1 )
+ceil ( 0 )
