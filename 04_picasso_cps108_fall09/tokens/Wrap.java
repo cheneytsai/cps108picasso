@@ -20,6 +20,9 @@ public class Wrap extends UnaryToken
     }
 
     @Override
+    /*
+     * Bounds the result within -1 to 1 such that -1.5 would wrap around to 5
+     */
     double[] UnaryEvaluate(List<EvaluatableToken> operands)
     {
         double[] ops = operands.get(0).evaluate();

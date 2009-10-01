@@ -5,8 +5,9 @@ import java.util.List;
 /**
  * RGB2YUV.java
  * 
- * @author Jimmy Shedlick, Cheney Tsai, Michael Yu Converts RGB to YUV
- *         colorspace
+ * Converts RGB to YUV colorspace
+ *        
+ * @author Jimmy Shedlick, Cheney Tsai, Michael Yu C
  */
 
 public class RGB2YUV extends UnaryToken
@@ -20,6 +21,11 @@ public class RGB2YUV extends UnaryToken
     }
 
     @Override
+    /*
+     * Converts RGB to YUV using Matrix Multiplication
+     * 
+     * @return
+     */
     double[] UnaryEvaluate(List<EvaluatableToken> operands)
     {
         double[] op = operands.get(0).evaluate();

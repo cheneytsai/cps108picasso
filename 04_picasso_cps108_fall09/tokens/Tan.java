@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * Tan.java
  * 
+ * Implements the Tan Function
+ * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */

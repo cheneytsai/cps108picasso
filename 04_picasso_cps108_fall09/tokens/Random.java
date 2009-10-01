@@ -5,7 +5,10 @@ import java.util.ResourceBundle;
 /**
  * Random.java
  * 
+ * Generates a random color value for each RGB for each pixel
+ * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
+ * 
  * 
  */
 

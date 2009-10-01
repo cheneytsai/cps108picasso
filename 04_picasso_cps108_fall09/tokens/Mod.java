@@ -1,7 +1,9 @@
 package tokens;
 
 /**
- * ImageHandler.java
+ * Mod.java
+ * 
+ * Implements the Mod Function under the "%" Variable
  * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 

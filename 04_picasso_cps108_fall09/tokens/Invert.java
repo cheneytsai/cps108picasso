@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * Invert.java
  * 
+ * Implements the Invert Function under the "~" Operator
+ * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */

@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * Sin.java
  * 
+ * Implements the Sin function
+ * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */

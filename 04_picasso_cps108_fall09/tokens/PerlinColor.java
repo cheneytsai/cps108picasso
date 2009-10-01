@@ -6,6 +6,8 @@ import tokens.ImprovedNoise;
 /**
  * PerlinColor.java
  * 
+ * Uses ImprovedNoise class to implement the Perlin Algorithm Function for Color
+ * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */
