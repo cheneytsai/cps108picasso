@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * Log.java
  * 
+ * Implements the log Function
+ * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */

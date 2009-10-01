@@ -1,7 +1,9 @@
 package tokens;
 
 /**
- * ImageHandler.java
+ * Multiplication.java
+ * 
+ * Implements the Multiplication Operation under the "*" Operator
  * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 

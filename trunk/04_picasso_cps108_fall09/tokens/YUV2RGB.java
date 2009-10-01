@@ -20,6 +20,10 @@ public class YUV2RGB extends UnaryToken
     }
 
     @Override
+    /* Evaluates using Matrix Muliplication to convert
+     * from YUV space to RGB Space
+     * 
+     */
     double[] UnaryEvaluate(List<EvaluatableToken> operands)
     {
         double[] op = operands.get(0).evaluate();

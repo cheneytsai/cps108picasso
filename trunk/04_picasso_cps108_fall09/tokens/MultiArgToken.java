@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * MultiArgToken.java
  * 
+ * Abstract for Multivariable Functions
+ * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */
@@ -21,6 +23,9 @@ public abstract class MultiArgToken extends EvaluatableToken
     }
 
     @Override
+    /*
+     * Uses the ChainToken Method in Class Comma to tie together all arguments
+     */
     public double[] evaluate()
     {
         checkNumOperands();

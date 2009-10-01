@@ -7,6 +7,8 @@ import tokens.ImprovedNoise;
 /**
  * PerlinBW.java
  * 
+ * Uses ImprovedNoise class to implement the Perlin Algorithm Function for BW
+ * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */

@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * TanH.java
  * 
+ * Implements the TanH function
+ * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */

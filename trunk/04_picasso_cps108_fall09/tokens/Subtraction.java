@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 /**
  * Subtraction.java
  * 
+ * Implements the Subtraction Function under the "-" operator
+ * 
  * @author Jimmy Shedlick, Cheney Tsai, Michael Yu
  * 
  */
