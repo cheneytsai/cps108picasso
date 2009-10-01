@@ -130,6 +130,42 @@ public class PicassoTest extends TestCase {
             isEqual(testResults.nextDouble(), parse.evaluate()[0]);
         }    
     }
+    public void testCeil() throws FileNotFoundException
+    {
+        initializeScanner("Ceil");
+        while (testInput.hasNextLine())
+        {
+            parse.makeExpression(testInput.nextLine());
+            isEqual(testResults.nextDouble(), parse.evaluate()[0]);
+        }    
+    }
+    public void testFloor() throws FileNotFoundException
+    {
+        initializeScanner("Floor");
+        while (testInput.hasNextLine())
+        {
+            parse.makeExpression(testInput.nextLine());
+            isEqual(testResults.nextDouble(), parse.evaluate()[0]);
+        }    
+    }
+    public void testClamp() throws FileNotFoundException
+    {
+        initializeScanner("Clamp");
+        while (testInput.hasNextLine())
+        {
+            parse.makeExpression(testInput.nextLine());
+            isEqual(testResults.nextDouble(), parse.evaluate()[0]);
+        }    
+    }
+    public void testWrap() throws FileNotFoundException
+    {
+        initializeScanner("Clamp");
+        while (testInput.hasNextLine())
+        {
+            parse.makeExpression(testInput.nextLine());
+            isEqual(testResults.nextDouble(), parse.evaluate()[0]);
+        }    
+    }
     
     private void setCoordinates(int x, int y, Dimension size)
     {
